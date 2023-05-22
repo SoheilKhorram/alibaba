@@ -19,6 +19,10 @@ class NameInput extends StatelessWidget {
             cursorHeight: 24,
             cursorWidth: 1,
             decoration: InputDecoration(
+              prefixIcon: Icon(
+                Icons.person_outline,
+                color: Colors.grey,
+              ),
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.all(Radius.circular(8)),
               ),
