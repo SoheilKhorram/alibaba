@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:alibaba/widgets/name_input.dart';
 import 'package:alibaba/widgets/password_input.dart';
 import 'package:alibaba/widgets/email_input.dart';
+import 'package:alibaba/widgets/submit_button.dart';
 
 class SignupScreen extends StatelessWidget {
   const SignupScreen({super.key});
@@ -29,7 +30,7 @@ class SignupScreen extends StatelessWidget {
             NameInput(),
             PasswordInput(),
             EmailInput(),
-            SubmitButton(),
+            SubmitButton('ثبت نام در علی‌بابا'),
           ],
         ),
       ),
