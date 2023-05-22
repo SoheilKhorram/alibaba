@@ -26,6 +26,10 @@ class _PasswordInputState extends State<PasswordInput> {
             cursorHeight: 24,
             cursorWidth: 1,
             decoration: InputDecoration(
+              prefixIcon: Icon(
+                Icons.lock_outline,
+                color: Colors.grey,
+              ),
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.all(Radius.circular(8)),
               ),
