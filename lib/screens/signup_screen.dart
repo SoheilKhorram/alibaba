@@ -18,6 +18,7 @@ class SignupScreen extends StatelessWidget {
                 style: TextStyle(
                   fontSize: 22,
                   fontWeight: FontWeight.bold,
+                  fontFamily: 'Vazir',
                 ),
               ),
             )
