@@ -30,7 +30,13 @@ class SignupScreen extends StatelessWidget {
             NameInput(),
             PasswordInput(),
             EmailInput(),
-            SubmitButton('ثبت نام در علی‌بابا'),
+            Expanded(
+              child: Align(
+                alignment: Alignment.bottomCenter,
+                child: SubmitButton('ثبت نام در علی‌بابا'),
+              ),
+            ),
+            SizedBox(height: 10),
           ],
         ),
       ),
