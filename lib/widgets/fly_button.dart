@@ -1,10 +1,17 @@
 import 'package:flutter/material.dart';
 
-class FlyButton extends StatelessWidget {
+class FlyButton extends StatefulWidget {
   const FlyButton(this.text, {super.key});
 
   final String text;
 
+  @override
+  State<FlyButton> createState() {
+    return _FlyButtonState();
+  }
+}
+
+class _FlyButtonState extends State<FlyButton> {
   @override
   Widget build(BuildContext context) {
     return Expanded(
@@ -18,7 +25,7 @@ class FlyButton extends StatelessWidget {
         ),
         onPressed: () {},
         child: Text(
-          text,
+          widget.text,
           style: const TextStyle(
             fontFamily: 'Vazir',
             color: Colors.black,
