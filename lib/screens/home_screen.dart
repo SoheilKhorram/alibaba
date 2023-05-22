@@ -43,13 +43,12 @@ class HomeScreen extends StatelessWidget {
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(10),
                 child: Container(
-                  color: const Color(0xFFFDB713),
+                  color: Colors.white,
                   child: Row(
                     crossAxisAlignment: CrossAxisAlignment.stretch,
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: const [
                       FlyButton('پرواز خارجی'),
-                      FlyButton('پرواز داخلی'),
                     ],
                   ),
                 ),

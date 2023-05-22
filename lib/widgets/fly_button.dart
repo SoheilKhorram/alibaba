@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
 
+const List<Widget> flies = [
+  Text('پرواز خارجی'),
+  Text('پرواز داخلی'),
+];
+
 class FlyButton extends StatefulWidget {
   const FlyButton(this.text, {super.key});
 
@@ -12,27 +17,32 @@ class FlyButton extends StatefulWidget {
 }
 
 class _FlyButtonState extends State<FlyButton> {
+  final List<bool> _selectedFlies = [true, false];
+
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: ElevatedButton(
-        style: ElevatedButton.styleFrom(
-          backgroundColor: Colors.white,
-          foregroundColor: Colors.black,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(0),
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: [
+        Flexible(
+          flex: 0,
+          child: ToggleButtons(
+            isSelected: _selectedFlies,
+            onPressed: (int index) {
+              setState(() {
+                for (int i = 0; i < _selectedFlies.length; i++) {
+                  _selectedFlies[i] = i == index;
+                }
+              });
+            },
+            constraints: const BoxConstraints(
+              minHeight: 400.0,
+              minWidth: 164,
+            ),
+            children: flies,
           ),
         ),
-        onPressed: () {},
-        child: Text(
-          widget.text,
-          style: const TextStyle(
-            fontFamily: 'Vazir',
-            color: Colors.black,
-            fontSize: 18,
-          ),
-        ),
-      ),
+      ],
     );
   }
 }
