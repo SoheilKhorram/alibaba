@@ -29,6 +29,7 @@ class SignupScreen extends StatelessWidget {
             NameInput(),
             PasswordInput(),
             EmailInput(),
+            SubmitButton(),
           ],
         ),
       ),
