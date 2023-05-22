@@ -40,6 +40,7 @@ class _PasswordInputState extends State<PasswordInput> {
         child: Directionality(
           textDirection: TextDirection.rtl,
           child: TextField(
+            obscureText: obscureTextState!,
             style: const TextStyle(
               fontFamily: 'Vazir',
               fontSize: 16,
