@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'package:alibaba/widgets/fly_button.dart';
+
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
@@ -45,47 +47,9 @@ class HomeScreen extends StatelessWidget {
                   child: Row(
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      Expanded(
-                        child: ElevatedButton(
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: Colors.white,
-                            foregroundColor: Colors.black,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(0),
-                            ),
-                          ),
-                          onPressed: () {},
-                          child: const Text(
-                            'پرواز خارجی',
-                            style: TextStyle(
-                              fontFamily: 'Vazir',
-                              color: Colors.black,
-                              fontSize: 18,
-                            ),
-                          ),
-                        ),
-                      ),
-                      Expanded(
-                        child: ElevatedButton(
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: Colors.white,
-                            foregroundColor: Colors.black,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(0),
-                            ),
-                          ),
-                          onPressed: () {},
-                          child: const Text(
-                            'پرواز داخلی',
-                            style: TextStyle(
-                              fontFamily: 'Vazir',
-                              color: Colors.black,
-                              fontSize: 18,
-                            ),
-                          ),
-                        ),
-                      ),
+                    children: const [
+                      FlyButton('پرواز خارجی'),
+                      FlyButton('پرواز داخلی'),
                     ],
                   ),
                 ),
