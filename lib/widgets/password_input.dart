@@ -10,6 +10,28 @@ class PasswordInput extends StatefulWidget {
 }
 
 class _PasswordInputState extends State<PasswordInput> {
+  IconData? icon;
+  bool? obscureTextState;
+
+  @override
+  void initState() {
+    super.initState();
+    icon = Icons.visibility_off;
+    obscureTextState = true;
+  }
+
+  void onShowIcon(bool obscureTextState) {
+    setState(() {
+      this.obscureTextState = !obscureTextState;
+
+      if (obscureTextState) {
+        icon = Icons.visibility_off;
+      } else {
+        icon = Icons.visibility;
+      }
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -31,8 +53,10 @@ class _PasswordInputState extends State<PasswordInput> {
                 color: Colors.grey,
               ),
               suffixIcon: IconButton(
-                onPressed: () {},
-                icon: const Icon(Icons.visibility),
+                onPressed: () {
+                  onShowIcon(obscureTextState!);
+                },
+                icon: Icon(color: Colors.grey, icon),
               ),
               border: const OutlineInputBorder(
                 borderRadius: BorderRadius.all(Radius.circular(8)),
