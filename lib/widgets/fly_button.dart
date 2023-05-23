@@ -35,6 +35,15 @@ class _FlyButtonState extends State<FlyButton> {
                 }
               });
             },
+            textStyle: const TextStyle(
+              fontSize: 16,
+              fontWeight: FontWeight.bold,
+              fontFamily: 'Vazir',
+            ),
+            fillColor: const Color(0xFF0077db),
+            selectedColor: Colors.white,
+            color: Colors.black,
+            borderColor: Colors.white,
             constraints: const BoxConstraints(
               minHeight: 400.0,
               minWidth: 164,
