@@ -17,7 +17,7 @@ class FlyButton extends StatefulWidget {
 }
 
 class _FlyButtonState extends State<FlyButton> {
-  final List<bool> _selectedFlies = [false, true];
+  final List<bool> _selectedFlies = [true, false];
 
   @override
   Widget build(BuildContext context) {
@@ -35,18 +35,9 @@ class _FlyButtonState extends State<FlyButton> {
                 }
               });
             },
-            textStyle: const TextStyle(
-              fontSize: 16,
-              fontWeight: FontWeight.bold,
-              fontFamily: 'Vazir',
-            ),
-            fillColor: Color(0xFF0077db),
-            selectedColor: Colors.white,
-            color: Colors.black,
-            borderColor: Colors.white,
             constraints: const BoxConstraints(
               minHeight: 400.0,
-              minWidth: 164.2,
+              minWidth: 164,
             ),
             children: flies,
           ),
