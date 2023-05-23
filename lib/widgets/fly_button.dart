@@ -40,7 +40,7 @@ class _FlyButtonState extends State<FlyButton> {
               fontWeight: FontWeight.bold,
               fontFamily: 'Vazir',
             ),
-            fillColor: const Color(0xFF0077db),
+            fillColor: const Color(0xBD0078DB),
             selectedColor: Colors.white,
             color: Colors.black,
             borderColor: Colors.white,
