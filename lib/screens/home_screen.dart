@@ -12,17 +12,21 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  var originCities = [
+    'تهران',
+    'مشهد',
+    'اصفهان',
+    'تبریز',
+    'کیش',
+    'شیراز',
+  ];
+  String? defaultOriginCity;
+
+  var destinationCities = ['تهران', 'مشهد', 'اصفهان', 'تبریز', 'کیش', 'شیراز'];
+  String? defaultDestinationCity;
+
   @override
   Widget build(BuildContext context) {
-    ColorLabel? selectedColor;
-    final List<DropdownMenuEntry<ColorLabel>> colorEntries =
-        <DropdownMenuEntry<ColorLabel>>[];
-    for (final ColorLabel color in ColorLabel.values) {
-      colorEntries.add(
-        DropdownMenuEntry<ColorLabel>(value: color, label: color.label),
-      );
-    }
-
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
@@ -71,57 +75,101 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.only(
-                top: 220,
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
+              padding: const EdgeInsets.only(top: 220),
+              child: Column(
                 children: [
-                  Directionality(
-                    textDirection: TextDirection.rtl,
-                    child: DropdownMenu(
-                      width: 165,
-                      label: const Text('Color'),
-                      dropdownMenuEntries: colorEntries,
-                      onSelected: (ColorLabel? color) {
-                        setState(() {
-                          selectedColor = color;
-                        });
-                      },
-                    ),
-                  ),
-                  Directionality(
-                    textDirection: TextDirection.rtl,
-                    child: DropdownMenu(
-                      width: 165,
-                      initialSelection: ColorLabel.green,
-                      label: const Text('Color'),
-                      dropdownMenuEntries: colorEntries,
-                      onSelected: (ColorLabel? color) {
-                        setState(() {
-                          selectedColor = color;
-                        });
-                      },
-                    ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Directionality(
+                        textDirection: TextDirection.rtl,
+                        child: SizedBox(
+                          width: 155,
+                          child: DropdownButton(
+                            icon: const Icon(Icons.place_outlined),
+                            isExpanded: true,
+                            items: destinationCities
+                                .map((city) => DropdownMenuItem(
+                                      value: city,
+                                      child: Container(
+                                        alignment: Alignment.centerRight,
+                                        child: Text(
+                                          city,
+                                          style: const TextStyle(
+                                            fontSize: 18,
+                                            fontWeight: FontWeight.bold,
+                                            fontFamily: 'Vazir',
+                                          ),
+                                        ),
+                                      ),
+                                    ))
+                                .toList(),
+                            onChanged: (String? defaultCitySelected) {
+                              setState(() {
+                                defaultDestinationCity = defaultCitySelected!;
+                              });
+                            },
+                            value: defaultDestinationCity,
+                            hint: const Text(
+                              'مقصد',
+                              style: TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold,
+                                fontFamily: 'Vazir',
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                      const SizedBox(width: 10),
+                      Directionality(
+                        textDirection: TextDirection.rtl,
+                        child: SizedBox(
+                          width: 155,
+                          child: DropdownButton(
+                            icon: const Icon(Icons.place_outlined),
+                            isExpanded: true,
+                            items: originCities
+                                .map((city) => DropdownMenuItem(
+                                      value: city,
+                                      child: Container(
+                                        alignment: Alignment.centerRight,
+                                        child: Text(
+                                          city,
+                                          style: const TextStyle(
+                                            fontSize: 18,
+                                            fontWeight: FontWeight.bold,
+                                            fontFamily: 'Vazir',
+                                          ),
+                                        ),
+                                      ),
+                                    ))
+                                .toList(),
+                            onChanged: (String? defaultCitySelected) {
+                              setState(() {
+                                defaultOriginCity = defaultCitySelected!;
+                              });
+                            },
+                            value: defaultOriginCity,
+                            hint: const Text(
+                              'مبدا',
+                              style: TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold,
+                                fontFamily: 'Vazir',
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                 ],
               ),
-            )
+            ),
           ],
         ),
       ),
     );
   }
-}
-
-enum ColorLabel {
-  blue('Blue', Colors.blue),
-  pink('Pink', Colors.pink),
-  green('Green', Colors.green),
-  yellow('Yellow', Colors.yellow),
-  grey('Grey', Colors.grey);
-
-  const ColorLabel(this.label, this.color);
-  final String label;
-  final Color color;
 }
