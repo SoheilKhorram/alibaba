@@ -20,6 +20,7 @@ class _TravellersNumberState extends State<TravellersNumber> {
   void initState() {
     super.initState();
     numberOfGrownups = 1;
+    numberOfKids = 0;
   }
 
   void incrementGrownups(int numberOfGrownups) {
@@ -34,10 +35,22 @@ class _TravellersNumberState extends State<TravellersNumber> {
     });
   }
 
+  void incrementKids(int numberOfKids) {
+    setState(() {
+      this.numberOfKids = numberOfKids + 1;
+    });
+  }
+
+  void decrementKids(int numberOfKids) {
+    setState(() {
+      this.numberOfKids = numberOfKids - 1;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 200,
+      height: 300,
       child: Directionality(
         textDirection: TextDirection.rtl,
         child: Padding(
@@ -88,6 +101,48 @@ class _TravellersNumberState extends State<TravellersNumber> {
                         ? null
                         : () {
                             decrementGrownups(numberOfGrownups!);
+                          },
+                    icon: const Icon(
+                      Icons.indeterminate_check_box,
+                      size: 35,
+                    ),
+                    color: const Color(0xFF0077db),
+                  ),
+                ],
+              ),
+              Row(
+                children: [
+                  const Text(
+                    'کودک (2 تا 12 سال)',
+                    style: TextStyle(
+                      fontFamily: 'Vazir',
+                      fontSize: 17,
+                    ),
+                  ),
+                  const Spacer(),
+                  IconButton(
+                    onPressed: () {
+                      incrementKids(numberOfKids!);
+                    },
+                    icon: const Icon(
+                      Icons.add_box,
+                      size: 35,
+                    ),
+                    color: const Color(0xFF0077db),
+                  ),
+                  Text(
+                    "$numberOfKids".toPersianDigit(),
+                    style: const TextStyle(
+                      fontSize: 16,
+                      fontFamily: 'Vazir',
+                    ),
+                    locale: const Locale('fa'),
+                  ),
+                  IconButton(
+                    onPressed: numberOfKids! <= 0
+                        ? null
+                        : () {
+                            decrementKids(numberOfKids!);
                           },
                     icon: const Icon(
                       Icons.indeterminate_check_box,
