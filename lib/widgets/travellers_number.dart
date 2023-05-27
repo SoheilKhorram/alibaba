@@ -207,6 +207,16 @@ class _TravellersNumberState extends State<TravellersNumber> {
                   ),
                 ],
               ),
+              ElevatedButton(
+                onPressed: () {},
+                child: const Text(
+                  "تایید و جستجو",
+                  style: TextStyle(
+                    fontFamily: 'Vazir',
+                    fontSize: 17,
+                  ),
+                ),
+              )
             ],
           ),
         ),
