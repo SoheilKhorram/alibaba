@@ -21,6 +21,7 @@ class _TravellersNumberState extends State<TravellersNumber> {
     super.initState();
     numberOfGrownups = 1;
     numberOfKids = 0;
+    numberOfinfants = 0;
   }
 
   void incrementGrownups(int numberOfGrownups) {
@@ -44,6 +45,18 @@ class _TravellersNumberState extends State<TravellersNumber> {
   void decrementKids(int numberOfKids) {
     setState(() {
       this.numberOfKids = numberOfKids - 1;
+    });
+  }
+
+  void incrementInfants(int numberOfinfants) {
+    setState(() {
+      this.numberOfinfants = numberOfinfants + 1;
+    });
+  }
+
+  void decrementInfants(int numberOfinfants) {
+    setState(() {
+      this.numberOfinfants = numberOfinfants - 1;
     });
   }
 
@@ -143,6 +156,48 @@ class _TravellersNumberState extends State<TravellersNumber> {
                         ? null
                         : () {
                             decrementKids(numberOfKids!);
+                          },
+                    icon: const Icon(
+                      Icons.indeterminate_check_box,
+                      size: 35,
+                    ),
+                    color: const Color(0xFF0077db),
+                  ),
+                ],
+              ),
+              Row(
+                children: [
+                  const Text(
+                    'نوزاد (10 روز تا 2 سال)',
+                    style: TextStyle(
+                      fontFamily: 'Vazir',
+                      fontSize: 17,
+                    ),
+                  ),
+                  const Spacer(),
+                  IconButton(
+                    onPressed: () {
+                      incrementInfants(numberOfinfants!);
+                    },
+                    icon: const Icon(
+                      Icons.add_box,
+                      size: 35,
+                    ),
+                    color: const Color(0xFF0077db),
+                  ),
+                  Text(
+                    "$numberOfinfants".toPersianDigit(),
+                    style: const TextStyle(
+                      fontSize: 16,
+                      fontFamily: 'Vazir',
+                    ),
+                    locale: const Locale('fa'),
+                  ),
+                  IconButton(
+                    onPressed: numberOfinfants! <= 0
+                        ? null
+                        : () {
+                            decrementInfants(numberOfinfants!);
                           },
                     icon: const Icon(
                       Icons.indeterminate_check_box,
