@@ -22,6 +22,18 @@ class _TravellersNumberState extends State<TravellersNumber> {
     numberOfGrownups = 1;
   }
 
+  void incrementGrownups(int numberOfGrownups) {
+    setState(() {
+      this.numberOfGrownups = numberOfGrownups + 1;
+    });
+  }
+
+  void decrementGrownups(int numberOfGrownups) {
+    setState(() {
+      this.numberOfGrownups = numberOfGrownups - 1;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -34,7 +46,14 @@ class _TravellersNumberState extends State<TravellersNumber> {
             children: [
               const Align(
                 alignment: Alignment.centerRight,
-                child: Text('مسافران'),
+                child: Text(
+                  'مسافران',
+                  style: TextStyle(
+                    fontFamily: 'Vazir',
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
               ),
               Row(
                 children: [
@@ -47,7 +66,9 @@ class _TravellersNumberState extends State<TravellersNumber> {
                   ),
                   const Spacer(),
                   IconButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      incrementGrownups(numberOfGrownups!);
+                    },
                     icon: const Icon(
                       Icons.add_box,
                       size: 35,
@@ -57,13 +78,17 @@ class _TravellersNumberState extends State<TravellersNumber> {
                   Text(
                     "$numberOfGrownups".toPersianDigit(),
                     style: const TextStyle(
-                      fontSize: 20,
+                      fontSize: 16,
                       fontFamily: 'Vazir',
                     ),
                     locale: const Locale('fa'),
                   ),
                   IconButton(
-                    onPressed: numberOfGrownups > 1 ? null : () {},
+                    onPressed: numberOfGrownups! <= 1
+                        ? null
+                        : () {
+                            decrementGrownups(numberOfGrownups!);
+                          },
                     icon: const Icon(
                       Icons.indeterminate_check_box,
                       size: 35,
