@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'package:persian_number_utility/persian_number_utility.dart';
+
 class TravellersNumber extends StatefulWidget {
   const TravellersNumber({super.key});
 
@@ -17,9 +19,7 @@ class _TravellersNumberState extends State<TravellersNumber> {
   @override
   void initState() {
     super.initState();
-    print(numberOfGrownups);
     numberOfGrownups = 1;
-    print(numberOfGrownups);
   }
 
   @override
@@ -38,7 +38,14 @@ class _TravellersNumberState extends State<TravellersNumber> {
               ),
               Row(
                 children: [
-                  const Text('بزرگسال (12 سال به بالا)'),
+                  const Text(
+                    'بزرگسال  (12 سال به بالا)',
+                    style: TextStyle(
+                      fontFamily: 'Vazir',
+                      fontSize: 17,
+                    ),
+                  ),
+                  const Spacer(),
                   IconButton(
                     onPressed: () {},
                     icon: const Icon(
@@ -47,9 +54,16 @@ class _TravellersNumberState extends State<TravellersNumber> {
                     ),
                     color: const Color(0xFF0077db),
                   ),
-                  Text("$numberOfGrownups"),
+                  Text(
+                    "$numberOfGrownups".toPersianDigit(),
+                    style: const TextStyle(
+                      fontSize: 20,
+                      fontFamily: 'Vazir',
+                    ),
+                    locale: const Locale('fa'),
+                  ),
                   IconButton(
-                    onPressed: () {},
+                    onPressed: numberOfGrownups > 1 ? null : () {},
                     icon: const Icon(
                       Icons.indeterminate_check_box,
                       size: 35,
@@ -57,7 +71,7 @@ class _TravellersNumberState extends State<TravellersNumber> {
                     color: const Color(0xFF0077db),
                   ),
                 ],
-              )
+              ),
             ],
           ),
         ),
