@@ -164,6 +164,88 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                     ],
                   ),
+                  const SizedBox(height: 20),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      SizedBox(
+                        child: Row(
+                          children: [
+                            SizedBox(
+                              width: 160,
+                              height: 40,
+                              child: Directionality(
+                                textDirection: TextDirection.rtl,
+                                child: OutlinedButton.icon(
+                                  icon: const Icon(
+                                    Icons.calendar_month_outlined,
+                                    color: Colors.grey,
+                                    size: 20,
+                                  ),
+                                  label: const Text(
+                                    "تاریخ برگشت",
+                                    style: TextStyle(
+                                      color: Colors.grey,
+                                      fontFamily: 'Vazir',
+                                      fontSize: 15,
+                                    ),
+                                  ),
+                                  onPressed: () {},
+                                  style: ButtonStyle(
+                                    shape: MaterialStateProperty.all(
+                                      const RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.only(
+                                          bottomLeft: Radius.circular(8),
+                                          bottomRight: Radius.circular(0),
+                                          topLeft: Radius.circular(8),
+                                          topRight: Radius.circular(0),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                            SizedBox(
+                              width: 160,
+                              height: 40,
+                              child: Directionality(
+                                textDirection: TextDirection.rtl,
+                                child: OutlinedButton.icon(
+                                  icon: const Icon(
+                                    Icons.calendar_month_outlined,
+                                    color: Colors.grey,
+                                    size: 20,
+                                  ),
+                                  label: const Text(
+                                    "تاریخ رفت",
+                                    style: TextStyle(
+                                      color: Colors.grey,
+                                      fontFamily: 'Vazir',
+                                      fontSize: 15,
+                                    ),
+                                  ),
+                                  onPressed: () {},
+                                  style: ButtonStyle(
+                                    shape: MaterialStateProperty.all(
+                                      const RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.only(
+                                          bottomLeft: Radius.circular(0),
+                                          bottomRight: Radius.circular(8),
+                                          topLeft: Radius.circular(0),
+                                          topRight: Radius.circular(8),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      )
+                    ],
+                  )
                 ],
               ),
             ),
