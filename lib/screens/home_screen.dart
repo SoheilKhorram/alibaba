@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:alibaba/widgets/fly_button.dart';
+import 'package:alibaba/widgets/travellers_number.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -245,6 +246,18 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                       )
                     ],
+                  ),
+                  const SizedBox(height: 20),
+                  ElevatedButton(
+                    onPressed: () {
+                      showModalBottomSheet(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return const TravellersNumber();
+                        },
+                      );
+                    },
+                    child: const Text("click"),
                   )
                 ],
               ),

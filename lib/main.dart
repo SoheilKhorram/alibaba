@@ -6,6 +6,6 @@ import 'package:alibaba/screens/home_screen.dart';
 
 void main() {
   runApp(
-    const HomeScreen(),
+    const MaterialApp(home: HomeScreen()),
   );
 }
