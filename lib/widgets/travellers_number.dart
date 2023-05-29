@@ -1,3 +1,4 @@
+import 'package:alibaba/screens/home_screen.dart';
 import 'package:flutter/material.dart';
 
 import 'package:persian_number_utility/persian_number_utility.dart';
@@ -15,6 +16,7 @@ class _TravellersNumberState extends State<TravellersNumber> {
   int? numberOfGrownups;
   int? numberOfKids;
   int? numberOfinfants;
+  int? numberOfTravelers;
 
   @override
   void initState() {
@@ -22,41 +24,48 @@ class _TravellersNumberState extends State<TravellersNumber> {
     numberOfGrownups = 1;
     numberOfKids = 0;
     numberOfinfants = 0;
+    numberOfTravelers = numberOfGrownups! + numberOfKids! + numberOfinfants!;
   }
 
   void incrementGrownups(int numberOfGrownups) {
     setState(() {
       this.numberOfGrownups = numberOfGrownups + 1;
+      numberOfTravelers = numberOfGrownups + numberOfKids! + numberOfinfants!;
     });
   }
 
   void decrementGrownups(int numberOfGrownups) {
     setState(() {
       this.numberOfGrownups = numberOfGrownups - 1;
+      numberOfTravelers = numberOfGrownups + numberOfKids! + numberOfinfants!;
     });
   }
 
   void incrementKids(int numberOfKids) {
     setState(() {
       this.numberOfKids = numberOfKids + 1;
+      numberOfTravelers = numberOfGrownups! + numberOfKids + numberOfinfants!;
     });
   }
 
   void decrementKids(int numberOfKids) {
     setState(() {
       this.numberOfKids = numberOfKids - 1;
+      numberOfTravelers = numberOfGrownups! + numberOfKids + numberOfinfants!;
     });
   }
 
   void incrementInfants(int numberOfinfants) {
     setState(() {
       this.numberOfinfants = numberOfinfants + 1;
+      numberOfTravelers = numberOfGrownups! + numberOfKids! + numberOfinfants;
     });
   }
 
   void decrementInfants(int numberOfinfants) {
     setState(() {
       this.numberOfinfants = numberOfinfants - 1;
+      numberOfTravelers = numberOfGrownups! + numberOfKids! + numberOfinfants;
     });
   }
 

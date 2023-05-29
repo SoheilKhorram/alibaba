@@ -248,19 +248,33 @@ class _HomeScreenState extends State<HomeScreen> {
                     ],
                   ),
                   const SizedBox(height: 20),
-                  ElevatedButton(
-                    onPressed: () {
-                      showModalBottomSheet(
-                        shape: RoundedRectangleBorder(
+                  Directionality(
+                    textDirection: TextDirection.rtl,
+                    child: TextField(
+                      readOnly: true,
+                      decoration: InputDecoration(
+                        border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10),
                         ),
-                        context: context,
-                        builder: (BuildContext context) {
-                          return const TravellersNumber();
-                        },
-                      );
-                    },
-                    child: const Text("click"),
+                        labelText: 'مسافران',
+                        hintStyle: const TextStyle(
+                          fontFamily: 'Vazir',
+                          fontSize: 18,
+                        ),
+                        suffixIcon: const Icon(Icons.search),
+                      ),
+                      onTap: () {
+                        showModalBottomSheet(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          context: context,
+                          builder: (BuildContext context) {
+                            return const TravellersNumber();
+                          },
+                        );
+                      },
+                    ),
                   )
                 ],
               ),
