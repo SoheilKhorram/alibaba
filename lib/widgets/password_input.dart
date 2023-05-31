@@ -1,7 +1,10 @@
+//import necessary package
+
 import 'package:flutter/material.dart';
+import 'dart:async';
 
 class PasswordInput extends StatefulWidget {
-  const PasswordInput({super.key});
+  const PasswordInput({Key? key});
 
   @override
   State<PasswordInput> createState() {
@@ -12,24 +15,41 @@ class PasswordInput extends StatefulWidget {
 class _PasswordInputState extends State<PasswordInput> {
   IconData? icon;
   bool? obscureTextState;
+  late bool showPassword;
+
+  Timer? _timer;
 
   @override
   void initState() {
     super.initState();
     icon = Icons.visibility_off;
     obscureTextState = true;
+    showPassword = false;
   }
 
-  void onShowIcon(bool obscureTextState) {
+  void togglePasswordVisibility() {
     setState(() {
-      this.obscureTextState = !obscureTextState;
+      showPassword = !showPassword;
 
-      if (obscureTextState) {
-        icon = Icons.visibility_off;
-      } else {
+      if (showPassword) {
         icon = Icons.visibility;
+        _timer = Timer(const Duration(seconds: 3), () {
+          setState(() {
+            showPassword = false;
+            icon = Icons.visibility_off;
+          });
+        });
+      } else {
+        icon = Icons.visibility_off;
+        _timer?.cancel();
       }
     });
+  }
+
+  @override
+  void dispose() {
+    _timer?.cancel();
+    super.dispose();
   }
 
   @override
@@ -40,7 +60,7 @@ class _PasswordInputState extends State<PasswordInput> {
         child: Directionality(
           textDirection: TextDirection.rtl,
           child: TextField(
-            obscureText: obscureTextState!,
+            obscureText: !showPassword,
             style: const TextStyle(
               fontFamily: 'Vazir',
               fontSize: 16,
@@ -54,9 +74,7 @@ class _PasswordInputState extends State<PasswordInput> {
                 color: Colors.grey,
               ),
               suffixIcon: IconButton(
-                onPressed: () {
-                  onShowIcon(obscureTextState!);
-                },
+                onPressed: togglePasswordVisibility,
                 icon: Icon(color: Colors.grey, icon),
               ),
               border: const OutlineInputBorder(
@@ -70,7 +88,7 @@ class _PasswordInputState extends State<PasswordInput> {
                 ),
               ),
               labelStyle:
-                  const TextStyle(fontFamily: 'Vazir', color: Colors.grey),
+              const TextStyle(fontFamily: 'Vazir', color: Colors.grey),
               labelText: 'کلمه عبور',
             ),
           ),
