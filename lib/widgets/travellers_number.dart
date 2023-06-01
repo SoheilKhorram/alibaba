@@ -24,20 +24,22 @@ class _TravellersNumberState extends State<TravellersNumber> {
     numberOfGrownups = 1;
     numberOfKids = 0;
     numberOfinfants = 0;
-    numberOfTravelers = numberOfGrownups! + numberOfKids! + numberOfinfants!;
+    numberOfTravelers = 1;
   }
 
   void incrementGrownups(int numberOfGrownups) {
     setState(() {
       this.numberOfGrownups = numberOfGrownups + 1;
-      numberOfTravelers = numberOfGrownups + numberOfKids! + numberOfinfants!;
+      numberOfTravelers =
+          this.numberOfGrownups! + numberOfKids! + numberOfinfants!;
     });
   }
 
   void decrementGrownups(int numberOfGrownups) {
     setState(() {
       this.numberOfGrownups = numberOfGrownups - 1;
-      numberOfTravelers = numberOfGrownups + numberOfKids! + numberOfinfants!;
+      numberOfTravelers =
+          this.numberOfGrownups! + numberOfKids! + numberOfinfants!;
     });
   }
 
