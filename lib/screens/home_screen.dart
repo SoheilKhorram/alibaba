@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:alibaba/widgets/fly_button.dart';
 import 'package:alibaba/widgets/travellers_number.dart';
+import 'package:persian_number_utility/persian_number_utility.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -13,6 +14,44 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  late int numberOfGrownups;
+  late int numberOfKids;
+  late int numberOfinfants;
+  late int numberOfTravelers;
+
+  @override
+  void initState() {
+    super.initState();
+    numberOfGrownups = 1;
+    numberOfKids = 0;
+    numberOfinfants = 0;
+    numberOfTravelers = 1;
+  }
+
+  void updateNumberOfTravelers(int numberOfTravelers) {
+    setState(() {
+      this.numberOfTravelers = numberOfTravelers;
+    });
+  }
+
+  void updateNumberOfGrownups(int numberOfGrownups) {
+    setState(() {
+      this.numberOfGrownups = numberOfGrownups;
+    });
+  }
+
+  void updateNumberOfKids(int numberOfKids) {
+    setState(() {
+      this.numberOfKids = numberOfKids;
+    });
+  }
+
+  void updateNumberOfinfants(int numberOfinfants) {
+    setState(() {
+      this.numberOfinfants = numberOfinfants;
+    });
+  }
+
   var originCities = [
     'تهران',
     'مشهد',
@@ -35,21 +74,18 @@ class _HomeScreenState extends State<HomeScreen> {
           children: [
             Align(
               alignment: Alignment.topCenter,
-              child: Transform.translate(
-                offset: const Offset(0, 52),
-                child: Container(
-                  height: 130,
-                  color: const Color(0xFFFDB713),
-                  child: Center(
-                    child: Transform.translate(
-                      offset: const Offset(0, -10),
-                      child: const Text(
-                        'پرواز',
-                        style: TextStyle(
-                          fontSize: 22,
-                          fontWeight: FontWeight.bold,
-                          fontFamily: 'Vazir',
-                        ),
+              child: Container(
+                height: 182,
+                color: const Color(0xFFFDB713),
+                child: Center(
+                  child: Transform.translate(
+                    offset: const Offset(0, 10),
+                    child: const Text(
+                      'پرواز',
+                      style: TextStyle(
+                        fontSize: 22,
+                        fontWeight: FontWeight.bold,
+                        fontFamily: 'Vazir',
                       ),
                     ),
                   ),
@@ -58,210 +94,252 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
             Positioned(
               top: 155,
-              left: 40,
-              right: 40,
               height: 50,
+              left: 15,
+              right: 15,
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(10),
                 child: Container(
                   color: Colors.white,
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: const [
-                      FlyButton('پرواز خارجی'),
-                    ],
+                  child: Expanded(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: const [
+                        FlyButton('پرواز خارجی'),
+                      ],
+                    ),
                   ),
                 ),
               ),
             ),
             Padding(
-              padding: const EdgeInsets.only(top: 220),
+              padding: const EdgeInsets.only(top: 220, left: 15, right: 15),
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Directionality(
-                        textDirection: TextDirection.rtl,
-                        child: SizedBox(
-                          width: 155,
-                          child: DropdownButton(
-                            icon: const Icon(Icons.place_outlined),
-                            isExpanded: true,
-                            items: destinationCities
-                                .map((city) => DropdownMenuItem(
-                                      value: city,
-                                      child: Container(
-                                        alignment: Alignment.centerRight,
-                                        child: Text(
-                                          city,
-                                          style: const TextStyle(
-                                            fontSize: 18,
-                                            fontWeight: FontWeight.bold,
-                                            fontFamily: 'Vazir',
-                                          ),
-                                        ),
-                                      ),
-                                    ))
-                                .toList(),
-                            onChanged: (String? defaultCitySelected) {
-                              setState(() {
-                                defaultDestinationCity = defaultCitySelected!;
-                              });
-                            },
-                            value: defaultDestinationCity,
-                            hint: const Text(
-                              'مقصد',
-                              style: TextStyle(
-                                fontSize: 18,
-                                fontWeight: FontWeight.bold,
-                                fontFamily: 'Vazir',
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                      const SizedBox(width: 10),
-                      Directionality(
-                        textDirection: TextDirection.rtl,
-                        child: SizedBox(
-                          width: 155,
-                          child: DropdownButton(
-                            icon: const Icon(Icons.place_outlined),
-                            isExpanded: true,
-                            items: originCities
-                                .map((city) => DropdownMenuItem(
-                                      value: city,
-                                      child: Container(
-                                        alignment: Alignment.centerRight,
-                                        child: Text(
-                                          city,
-                                          style: const TextStyle(
-                                            fontSize: 18,
-                                            fontWeight: FontWeight.bold,
-                                            fontFamily: 'Vazir',
-                                          ),
-                                        ),
-                                      ),
-                                    ))
-                                .toList(),
-                            onChanged: (String? defaultCitySelected) {
-                              setState(() {
-                                defaultOriginCity = defaultCitySelected!;
-                              });
-                            },
-                            value: defaultOriginCity,
-                            hint: const Text(
-                              'مبدا',
-                              style: TextStyle(
-                                fontSize: 18,
-                                fontWeight: FontWeight.bold,
-                                fontFamily: 'Vazir',
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                  const SizedBox(height: 20),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      SizedBox(
-                        child: Row(
-                          children: [
-                            SizedBox(
-                              width: 160,
-                              height: 40,
-                              child: Directionality(
-                                textDirection: TextDirection.rtl,
-                                child: OutlinedButton.icon(
-                                  icon: const Icon(
-                                    Icons.calendar_month_outlined,
-                                    color: Colors.grey,
-                                    size: 20,
-                                  ),
-                                  label: const Text(
-                                    "تاریخ برگشت",
+                  Container(
+                    decoration: BoxDecoration(
+                        color: const Color(0x05000000),
+                        borderRadius: BorderRadius.circular(10),
+                        border: Border.all(
+                          color: Colors.grey,
+                        )),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Directionality(
+                          textDirection: TextDirection.rtl,
+                          child: SizedBox(
+                            width: double.infinity,
+                            child: DropdownButtonHideUnderline(
+                              child: Container(
+                                padding:
+                                    const EdgeInsets.only(left: 10, right: 10),
+                                child: DropdownButton(
+                                  icon: const Icon(Icons.place_outlined),
+                                  isExpanded: true,
+                                  items: destinationCities
+                                      .map((city) => DropdownMenuItem(
+                                            value: city,
+                                            child: Container(
+                                              alignment: Alignment.centerRight,
+                                              child: Text(
+                                                city,
+                                                style: const TextStyle(
+                                                  fontSize: 18,
+                                                  fontWeight: FontWeight.bold,
+                                                  fontFamily: 'Vazir',
+                                                ),
+                                              ),
+                                            ),
+                                          ))
+                                      .toList(),
+                                  onChanged: (String? defaultCitySelected) {
+                                    setState(() {
+                                      defaultDestinationCity =
+                                          defaultCitySelected!;
+                                    });
+                                  },
+                                  value: defaultDestinationCity,
+                                  hint: const Text(
+                                    'مقصد',
                                     style: TextStyle(
-                                      color: Colors.grey,
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.bold,
                                       fontFamily: 'Vazir',
-                                      fontSize: 15,
-                                    ),
-                                  ),
-                                  onPressed: () {},
-                                  style: ButtonStyle(
-                                    shape: MaterialStateProperty.all(
-                                      const RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.only(
-                                          bottomLeft: Radius.circular(8),
-                                          bottomRight: Radius.circular(0),
-                                          topLeft: Radius.circular(8),
-                                          topRight: Radius.circular(0),
-                                        ),
-                                      ),
                                     ),
                                   ),
                                 ),
                               ),
                             ),
-                            SizedBox(
-                              width: 160,
-                              height: 40,
-                              child: Directionality(
-                                textDirection: TextDirection.rtl,
-                                child: OutlinedButton.icon(
-                                  icon: const Icon(
-                                    Icons.calendar_month_outlined,
-                                    color: Colors.grey,
-                                    size: 20,
-                                  ),
-                                  label: const Text(
-                                    "تاریخ رفت",
+                          ),
+                        ),
+                        const SizedBox(
+                            height: 1,
+                            width: double.infinity,
+                            child: DecoratedBox(
+                              decoration: BoxDecoration(color: Colors.grey),
+                            )),
+                        Directionality(
+                          textDirection: TextDirection.rtl,
+                          child: SizedBox(
+                            width: double.infinity,
+                            child: DropdownButtonHideUnderline(
+                              child: Container(
+                                padding:
+                                    const EdgeInsets.only(left: 10, right: 10),
+                                child: DropdownButton(
+                                  icon: const Icon(Icons.place_outlined),
+                                  isExpanded: true,
+                                  items: originCities
+                                      .map((city) => DropdownMenuItem(
+                                            value: city,
+                                            child: Container(
+                                              alignment: Alignment.centerRight,
+                                              child: Text(
+                                                city,
+                                                style: const TextStyle(
+                                                  fontSize: 18,
+                                                  fontWeight: FontWeight.bold,
+                                                  fontFamily: 'Vazir',
+                                                ),
+                                              ),
+                                            ),
+                                          ))
+                                      .toList(),
+                                  onChanged: (String? defaultCitySelected) {
+                                    setState(() {
+                                      defaultOriginCity = defaultCitySelected!;
+                                    });
+                                  },
+                                  value: defaultOriginCity,
+                                  hint: const Text(
+                                    'مبدا',
                                     style: TextStyle(
-                                      color: Colors.grey,
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.bold,
                                       fontFamily: 'Vazir',
-                                      fontSize: 15,
-                                    ),
-                                  ),
-                                  onPressed: () {},
-                                  style: ButtonStyle(
-                                    shape: MaterialStateProperty.all(
-                                      const RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.only(
-                                          bottomLeft: Radius.circular(0),
-                                          bottomRight: Radius.circular(8),
-                                          topLeft: Radius.circular(0),
-                                          topRight: Radius.circular(8),
-                                        ),
-                                      ),
                                     ),
                                   ),
                                 ),
                               ),
                             ),
-                          ],
+                          ),
                         ),
-                      )
-                    ],
+                      ],
+                    ),
                   ),
-                  const SizedBox(height: 20),
+                  const SizedBox(height: 25),
+                  Container(
+                    decoration: BoxDecoration(
+                      border: Border.all(color: Colors.grey),
+                      borderRadius: BorderRadius.circular(10),
+                      color: const Color(0x05000000),
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Expanded(
+                          child: SizedBox(
+                            height: 45,
+                            child: Directionality(
+                              textDirection: TextDirection.rtl,
+                              child: OutlinedButton.icon(
+                                icon: const Icon(
+                                  Icons.calendar_month_outlined,
+                                  color: Colors.grey,
+                                  size: 20,
+                                ),
+                                label: const Text(
+                                  "تاریخ برگشت",
+                                  style: TextStyle(
+                                    color: Colors.grey,
+                                    fontFamily: 'Vazir',
+                                    fontSize: 15,
+                                  ),
+                                ),
+                                onPressed: () {},
+                                style: OutlinedButton.styleFrom(
+                                  side: BorderSide.none,
+                                  backgroundColor: const Color(0x05000000),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                        const SizedBox(
+                            width: 1,
+                            height: 45,
+                            child: DecoratedBox(
+                              decoration: BoxDecoration(color: Colors.grey),
+                            )),
+                        Expanded(
+                          child: SizedBox(
+                            height: 45,
+                            child: Directionality(
+                              textDirection: TextDirection.rtl,
+                              child: OutlinedButton.icon(
+                                icon: const Icon(
+                                  Icons.calendar_month_outlined,
+                                  color: Colors.grey,
+                                  size: 20,
+                                ),
+                                label: const Text(
+                                  "تاریخ رفت",
+                                  style: TextStyle(
+                                    color: Colors.grey,
+                                    fontFamily: 'Vazir',
+                                    fontSize: 15,
+                                  ),
+                                ),
+                                onPressed: () {},
+                                style: OutlinedButton.styleFrom(
+                                  backgroundColor: const Color(0x05000000),
+                                  side: BorderSide.none,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  const SizedBox(height: 25),
                   Directionality(
                     textDirection: TextDirection.rtl,
                     child: TextField(
                       readOnly: true,
                       decoration: InputDecoration(
+                        filled: true,
+                        fillColor: const Color(0x05000000),
+                        contentPadding: const EdgeInsets.symmetric(
+                          vertical: 10,
+                          horizontal: 10,
+                        ),
                         border: OutlineInputBorder(
+                          borderSide: const BorderSide(color: Colors.grey),
                           borderRadius: BorderRadius.circular(10),
                         ),
-                        labelText: 'مسافران',
+                        focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10),
+                          borderSide: const BorderSide(
+                            color: Colors.grey,
+                          ),
+                        ),
+                        hintText: '$numberOfTravelers مسافر'.toPersianDigit(),
+                        labelText: "مسافران",
+                        floatingLabelBehavior: FloatingLabelBehavior.always,
                         hintStyle: const TextStyle(
                           fontFamily: 'Vazir',
                           fontSize: 18,
+                          fontWeight: FontWeight.w400,
+                          color: Colors.black,
                         ),
-                        suffixIcon: const Icon(Icons.search),
+                        labelStyle: const TextStyle(
+                          fontFamily: 'Vazir',
+                          fontSize: 15,
+                          color: Colors.grey,
+                        ),
                       ),
                       onTap: () {
                         showModalBottomSheet(
@@ -270,7 +348,16 @@ class _HomeScreenState extends State<HomeScreen> {
                           ),
                           context: context,
                           builder: (BuildContext context) {
-                            return const TravellersNumber();
+                            return TravellersNumber(
+                              numberOfGrownups: numberOfGrownups,
+                              numberOfKids: numberOfKids,
+                              numberOfinfants: numberOfinfants,
+                              numberOfTravelers: numberOfTravelers,
+                              updateNumberOfTravelers: updateNumberOfTravelers,
+                              updateNumberOfGrownups: updateNumberOfGrownups,
+                              updateNumberOfKids: updateNumberOfKids,
+                              updateNumberOfinfants: updateNumberOfinfants,
+                            );
                           },
                         );
                       },

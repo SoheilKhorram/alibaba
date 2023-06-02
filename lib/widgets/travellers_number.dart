@@ -3,8 +3,29 @@ import 'package:flutter/material.dart';
 
 import 'package:persian_number_utility/persian_number_utility.dart';
 
+// ignore: must_be_immutable
 class TravellersNumber extends StatefulWidget {
-  const TravellersNumber({super.key});
+  TravellersNumber({
+    super.key,
+    required this.numberOfGrownups,
+    required this.numberOfKids,
+    required this.numberOfinfants,
+    required this.numberOfTravelers,
+    required this.updateNumberOfGrownups,
+    required this.updateNumberOfKids,
+    required this.updateNumberOfinfants,
+    required this.updateNumberOfTravelers,
+  });
+
+  int numberOfGrownups;
+  int numberOfKids;
+  int numberOfinfants;
+  int numberOfTravelers;
+
+  Function(int) updateNumberOfGrownups;
+  Function(int) updateNumberOfKids;
+  Function(int) updateNumberOfinfants;
+  Function(int) updateNumberOfTravelers;
 
   @override
   State<TravellersNumber> createState() {
@@ -13,61 +34,69 @@ class TravellersNumber extends StatefulWidget {
 }
 
 class _TravellersNumberState extends State<TravellersNumber> {
-  int? numberOfGrownups;
-  int? numberOfKids;
-  int? numberOfinfants;
-  int? numberOfTravelers;
-
-  @override
-  void initState() {
-    super.initState();
-    numberOfGrownups = 1;
-    numberOfKids = 0;
-    numberOfinfants = 0;
-    numberOfTravelers = 1;
-  }
-
   void incrementGrownups(int numberOfGrownups) {
     setState(() {
-      this.numberOfGrownups = numberOfGrownups + 1;
-      numberOfTravelers =
-          this.numberOfGrownups! + numberOfKids! + numberOfinfants!;
+      widget.numberOfGrownups = numberOfGrownups + 1;
+      widget.numberOfTravelers = widget.numberOfGrownups +
+          widget.numberOfKids +
+          widget.numberOfinfants;
+      widget.updateNumberOfGrownups(widget.numberOfGrownups);
+      widget.updateNumberOfTravelers(widget.numberOfTravelers);
     });
   }
 
   void decrementGrownups(int numberOfGrownups) {
     setState(() {
-      this.numberOfGrownups = numberOfGrownups - 1;
-      numberOfTravelers =
-          this.numberOfGrownups! + numberOfKids! + numberOfinfants!;
+      widget.numberOfGrownups = numberOfGrownups - 1;
+      widget.numberOfTravelers = widget.numberOfGrownups +
+          widget.numberOfKids +
+          widget.numberOfinfants;
+      widget.updateNumberOfGrownups(widget.numberOfGrownups);
+      widget.updateNumberOfTravelers(widget.numberOfTravelers);
     });
   }
 
   void incrementKids(int numberOfKids) {
     setState(() {
-      this.numberOfKids = numberOfKids + 1;
-      numberOfTravelers = numberOfGrownups! + numberOfKids + numberOfinfants!;
+      widget.numberOfKids = numberOfKids + 1;
+      widget.numberOfTravelers = widget.numberOfGrownups +
+          widget.numberOfKids +
+          widget.numberOfinfants;
+      widget.updateNumberOfKids(widget.numberOfKids);
+      widget.updateNumberOfTravelers(widget.numberOfTravelers);
     });
   }
 
   void decrementKids(int numberOfKids) {
     setState(() {
-      this.numberOfKids = numberOfKids - 1;
-      numberOfTravelers = numberOfGrownups! + numberOfKids + numberOfinfants!;
+      widget.numberOfKids = numberOfKids - 1;
+      widget.numberOfTravelers = widget.numberOfGrownups +
+          widget.numberOfKids +
+          widget.numberOfinfants;
+      widget.updateNumberOfKids(widget.numberOfKids);
+      widget.updateNumberOfTravelers(widget.numberOfTravelers);
     });
   }
 
   void incrementInfants(int numberOfinfants) {
     setState(() {
-      this.numberOfinfants = numberOfinfants + 1;
-      numberOfTravelers = numberOfGrownups! + numberOfKids! + numberOfinfants;
+      widget.numberOfinfants = numberOfinfants + 1;
+      widget.numberOfTravelers = widget.numberOfGrownups +
+          widget.numberOfKids +
+          widget.numberOfinfants;
+      widget.updateNumberOfinfants(widget.numberOfinfants);
+      widget.updateNumberOfTravelers(widget.numberOfTravelers);
     });
   }
 
   void decrementInfants(int numberOfinfants) {
     setState(() {
-      this.numberOfinfants = numberOfinfants - 1;
-      numberOfTravelers = numberOfGrownups! + numberOfKids! + numberOfinfants;
+      widget.numberOfinfants = numberOfinfants - 1;
+      widget.numberOfTravelers = widget.numberOfGrownups +
+          widget.numberOfKids +
+          widget.numberOfinfants;
+      widget.updateNumberOfinfants(widget.numberOfinfants);
+      widget.updateNumberOfTravelers(widget.numberOfTravelers);
     });
   }
 
@@ -104,7 +133,7 @@ class _TravellersNumberState extends State<TravellersNumber> {
                   const Spacer(),
                   IconButton(
                     onPressed: () {
-                      incrementGrownups(numberOfGrownups!);
+                      incrementGrownups(widget.numberOfGrownups);
                     },
                     icon: const Icon(
                       Icons.add_box,
@@ -113,7 +142,7 @@ class _TravellersNumberState extends State<TravellersNumber> {
                     color: const Color(0xFF0077db),
                   ),
                   Text(
-                    "$numberOfGrownups".toPersianDigit(),
+                    "${widget.numberOfGrownups}".toPersianDigit(),
                     style: const TextStyle(
                       fontSize: 16,
                       fontFamily: 'Vazir',
@@ -121,10 +150,10 @@ class _TravellersNumberState extends State<TravellersNumber> {
                     locale: const Locale('fa'),
                   ),
                   IconButton(
-                    onPressed: numberOfGrownups! <= 1
+                    onPressed: widget.numberOfGrownups <= 1
                         ? null
                         : () {
-                            decrementGrownups(numberOfGrownups!);
+                            decrementGrownups(widget.numberOfGrownups);
                           },
                     icon: const Icon(
                       Icons.indeterminate_check_box,
@@ -146,7 +175,7 @@ class _TravellersNumberState extends State<TravellersNumber> {
                   const Spacer(),
                   IconButton(
                     onPressed: () {
-                      incrementKids(numberOfKids!);
+                      incrementKids(widget.numberOfKids);
                     },
                     icon: const Icon(
                       Icons.add_box,
@@ -155,7 +184,7 @@ class _TravellersNumberState extends State<TravellersNumber> {
                     color: const Color(0xFF0077db),
                   ),
                   Text(
-                    "$numberOfKids".toPersianDigit(),
+                    "${widget.numberOfKids}".toPersianDigit(),
                     style: const TextStyle(
                       fontSize: 16,
                       fontFamily: 'Vazir',
@@ -163,10 +192,10 @@ class _TravellersNumberState extends State<TravellersNumber> {
                     locale: const Locale('fa'),
                   ),
                   IconButton(
-                    onPressed: numberOfKids! <= 0
+                    onPressed: widget.numberOfKids <= 0
                         ? null
                         : () {
-                            decrementKids(numberOfKids!);
+                            decrementKids(widget.numberOfKids);
                           },
                     icon: const Icon(
                       Icons.indeterminate_check_box,
@@ -188,7 +217,7 @@ class _TravellersNumberState extends State<TravellersNumber> {
                   const Spacer(),
                   IconButton(
                     onPressed: () {
-                      incrementInfants(numberOfinfants!);
+                      incrementInfants(widget.numberOfinfants);
                     },
                     icon: const Icon(
                       Icons.add_box,
@@ -197,7 +226,7 @@ class _TravellersNumberState extends State<TravellersNumber> {
                     color: const Color(0xFF0077db),
                   ),
                   Text(
-                    "$numberOfinfants".toPersianDigit(),
+                    "${widget.numberOfinfants}".toPersianDigit(),
                     style: const TextStyle(
                       fontSize: 16,
                       fontFamily: 'Vazir',
@@ -205,10 +234,10 @@ class _TravellersNumberState extends State<TravellersNumber> {
                     locale: const Locale('fa'),
                   ),
                   IconButton(
-                    onPressed: numberOfinfants! <= 0
+                    onPressed: widget.numberOfinfants <= 0
                         ? null
                         : () {
-                            decrementInfants(numberOfinfants!);
+                            decrementInfants(widget.numberOfinfants);
                           },
                     icon: const Icon(
                       Icons.indeterminate_check_box,
