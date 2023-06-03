@@ -17,7 +17,7 @@ class TravelCity extends StatefulWidget {
     required this.hintText,
   });
 
-  Function(String?) updateCity;
+  Function(String?, String) updateCity;
   String hintText;
 
   @override
@@ -54,9 +54,10 @@ class _TravelCityState extends State<TravelCity> {
                     child: Text(city),
                   );
                 }).toList(),
-                onChanged: (String? value) {
+                onChanged: (String? city) {
                   setState(() {
-                    defaultCity = value!;
+                    defaultCity = city;
+                    widget.updateCity(city, widget.hintText);
                   });
                 },
                 value: defaultCity,

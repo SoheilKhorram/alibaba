@@ -54,29 +54,16 @@ class _HomeScreenState extends State<HomeScreen> {
     });
   }
 
-  var originCities = [
-    'تهران',
-    'مشهد',
-    'اصفهان',
-    'تبریز',
-    'کیش',
-    'شیراز',
-  ];
-  String? defaultOriginCity;
+  String? originCity;
+  String? destinationCity;
 
-  List<String> destinationCities = <String>[
-    'تهران',
-    'مشهد',
-    'اصفهان',
-    'تبریز',
-    'کیش',
-    'شیراز'
-  ];
-  String? defaultDestinationCity;
-
-  void updateCity(String? city) {
+  void updateCity(String? city, String hintText) {
     setState(() {
-      defaultDestinationCity = city;
+      if (hintText == "مقصد") {
+        destinationCity = city;
+      } else {
+        originCity = city;
+      }
     });
   }
 
