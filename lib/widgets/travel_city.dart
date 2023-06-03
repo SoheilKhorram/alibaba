@@ -51,7 +51,10 @@ class _TravelCityState extends State<TravelCity> {
                 items: cities.map<DropdownMenuItem<String>>((String city) {
                   return DropdownMenuItem<String>(
                     value: city,
-                    child: Text(city),
+                    child: Container(
+                      alignment: Alignment.centerRight,
+                      child: Text(city),
+                    ),
                   );
                 }).toList(),
                 onChanged: (String? city) {
