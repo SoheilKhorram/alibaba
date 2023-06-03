@@ -5,6 +5,7 @@ import 'package:alibaba/widgets/travellers_number.dart';
 import 'package:persian_number_utility/persian_number_utility.dart';
 import 'package:alibaba/widgets/submit_button.dart';
 import 'package:alibaba/widgets/travel_city.dart';
+import 'package:alibaba/widgets/travel_date.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -138,7 +139,6 @@ class _HomeScreenState extends State<HomeScreen> {
                       ],
                     ),
                   ),
-                  // ************************************************************
                   const SizedBox(height: 25),
                   Container(
                     decoration: BoxDecoration(
@@ -149,68 +149,14 @@ class _HomeScreenState extends State<HomeScreen> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Expanded(
-                          child: SizedBox(
-                            height: 45,
-                            child: Directionality(
-                              textDirection: TextDirection.rtl,
-                              child: OutlinedButton.icon(
-                                icon: const Icon(
-                                  Icons.calendar_month_outlined,
-                                  color: Colors.grey,
-                                  size: 20,
-                                ),
-                                label: const Text(
-                                  "تاریخ برگشت",
-                                  style: TextStyle(
-                                    color: Colors.grey,
-                                    fontFamily: 'Vazir',
-                                    fontSize: 15,
-                                  ),
-                                ),
-                                onPressed: () {},
-                                style: OutlinedButton.styleFrom(
-                                  side: BorderSide.none,
-                                  backgroundColor: const Color(0x05000000),
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
+                        Expanded(child: TravelDate(text: "تاریخ برگشت")),
                         const SizedBox(
                             width: 1,
                             height: 45,
                             child: DecoratedBox(
                               decoration: BoxDecoration(color: Colors.grey),
                             )),
-                        Expanded(
-                          child: SizedBox(
-                            height: 45,
-                            child: Directionality(
-                              textDirection: TextDirection.rtl,
-                              child: OutlinedButton.icon(
-                                icon: const Icon(
-                                  Icons.calendar_month_outlined,
-                                  color: Colors.grey,
-                                  size: 20,
-                                ),
-                                label: const Text(
-                                  "تاریخ رفت",
-                                  style: TextStyle(
-                                    color: Colors.grey,
-                                    fontFamily: 'Vazir',
-                                    fontSize: 15,
-                                  ),
-                                ),
-                                onPressed: () {},
-                                style: OutlinedButton.styleFrom(
-                                  backgroundColor: const Color(0x05000000),
-                                  side: BorderSide.none,
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
+                        Expanded(child: TravelDate(text: "تاریخ رفت")),
                       ],
                     ),
                   ),
@@ -227,7 +173,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           horizontal: 10,
                         ),
                         border: OutlineInputBorder(
-                          borderSide: const BorderSide(color: Colors.grey),
+                          borderSide: const BorderSide(color: Colors.white),
                           borderRadius: BorderRadius.circular(10),
                         ),
                         focusedBorder: OutlineInputBorder(
