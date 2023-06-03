@@ -13,12 +13,12 @@ class SignupScreen extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        body: Column(
-          children: const [
-            SizedBox(height: 52),
-            Padding(
-              padding: EdgeInsets.symmetric(vertical: 16, horizontal: 8),
-              child: Text(
+        body: Padding(
+          padding: const EdgeInsets.all(15),
+          child: Column(
+            children: const [
+              SizedBox(height: 52),
+              Text(
                 'ثبت نام',
                 style: TextStyle(
                   fontSize: 22,
@@ -26,18 +26,15 @@ class SignupScreen extends StatelessWidget {
                   fontFamily: 'Vazir',
                 ),
               ),
-            ),
-            NameInput(),
-            PasswordInput(),
-            EmailInput(),
-            Expanded(
-              child: Align(
-                alignment: Alignment.bottomCenter,
-                child: SubmitButton('ثبت نام در علی‌بابا'),
-              ),
-            ),
-            SizedBox(height: 10),
-          ],
+              NameInput(),
+              SizedBox(height: 15),
+              PasswordInput(),
+              SizedBox(height: 15),
+              EmailInput(),
+              Spacer(),
+              SubmitButton('ثبت نام در علی‌بابا'),
+            ],
+          ),
         ),
       ),
     );
