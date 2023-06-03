@@ -4,6 +4,7 @@ import 'package:alibaba/widgets/fly_button.dart';
 import 'package:alibaba/widgets/travellers_number.dart';
 import 'package:persian_number_utility/persian_number_utility.dart';
 import 'package:alibaba/widgets/submit_button.dart';
+import 'package:alibaba/widgets/travel_city.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -63,8 +64,21 @@ class _HomeScreenState extends State<HomeScreen> {
   ];
   String? defaultOriginCity;
 
-  var destinationCities = ['تهران', 'مشهد', 'اصفهان', 'تبریز', 'کیش', 'شیراز'];
+  List<String> destinationCities = <String>[
+    'تهران',
+    'مشهد',
+    'اصفهان',
+    'تبریز',
+    'کیش',
+    'شیراز'
+  ];
   String? defaultDestinationCity;
+
+  void updateCity(String? city) {
+    setState(() {
+      defaultDestinationCity = city;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -102,7 +116,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 borderRadius: BorderRadius.circular(10),
                 child: Container(
                   color: Colors.white,
-                  child: Expanded(
+                  child: Container(
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: const [
@@ -116,7 +130,6 @@ class _HomeScreenState extends State<HomeScreen> {
             Padding(
               padding: const EdgeInsets.only(top: 220, left: 15, right: 15),
               child: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   Container(
                     decoration: BoxDecoration(
@@ -126,110 +139,19 @@ class _HomeScreenState extends State<HomeScreen> {
                           color: Colors.grey,
                         )),
                     child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Directionality(
-                          textDirection: TextDirection.rtl,
-                          child: SizedBox(
-                            width: double.infinity,
-                            child: DropdownButtonHideUnderline(
-                              child: Container(
-                                padding:
-                                    const EdgeInsets.only(left: 10, right: 10),
-                                child: DropdownButton(
-                                  icon: const Icon(Icons.place_outlined),
-                                  isExpanded: true,
-                                  items: destinationCities
-                                      .map((city) => DropdownMenuItem(
-                                            value: city,
-                                            child: Container(
-                                              alignment: Alignment.centerRight,
-                                              child: Text(
-                                                city,
-                                                style: const TextStyle(
-                                                  fontSize: 18,
-                                                  fontWeight: FontWeight.bold,
-                                                  fontFamily: 'Vazir',
-                                                ),
-                                              ),
-                                            ),
-                                          ))
-                                      .toList(),
-                                  onChanged: (String? defaultCitySelected) {
-                                    setState(() {
-                                      defaultDestinationCity =
-                                          defaultCitySelected!;
-                                    });
-                                  },
-                                  value: defaultDestinationCity,
-                                  hint: const Text(
-                                    'مقصد',
-                                    style: TextStyle(
-                                      fontSize: 18,
-                                      fontWeight: FontWeight.bold,
-                                      fontFamily: 'Vazir',
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
+                        TravelCity(updateCity: updateCity, hintText: "مبدا"),
                         const SizedBox(
                             height: 1,
                             width: double.infinity,
                             child: DecoratedBox(
                               decoration: BoxDecoration(color: Colors.grey),
                             )),
-                        Directionality(
-                          textDirection: TextDirection.rtl,
-                          child: SizedBox(
-                            width: double.infinity,
-                            child: DropdownButtonHideUnderline(
-                              child: Container(
-                                padding:
-                                    const EdgeInsets.only(left: 10, right: 10),
-                                child: DropdownButton(
-                                  icon: const Icon(Icons.place_outlined),
-                                  isExpanded: true,
-                                  items: originCities
-                                      .map((city) => DropdownMenuItem(
-                                            value: city,
-                                            child: Container(
-                                              alignment: Alignment.centerRight,
-                                              child: Text(
-                                                city,
-                                                style: const TextStyle(
-                                                  fontSize: 18,
-                                                  fontWeight: FontWeight.bold,
-                                                  fontFamily: 'Vazir',
-                                                ),
-                                              ),
-                                            ),
-                                          ))
-                                      .toList(),
-                                  onChanged: (String? defaultCitySelected) {
-                                    setState(() {
-                                      defaultOriginCity = defaultCitySelected!;
-                                    });
-                                  },
-                                  value: defaultOriginCity,
-                                  hint: const Text(
-                                    'مبدا',
-                                    style: TextStyle(
-                                      fontSize: 18,
-                                      fontWeight: FontWeight.bold,
-                                      fontFamily: 'Vazir',
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
+                        TravelCity(updateCity: updateCity, hintText: "مقصد")
                       ],
                     ),
                   ),
+                  // ************************************************************
                   const SizedBox(height: 25),
                   Container(
                     decoration: BoxDecoration(
