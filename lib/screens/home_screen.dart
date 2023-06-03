@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:alibaba/widgets/fly_button.dart';
 import 'package:alibaba/widgets/travellers_number.dart';
 import 'package:persian_number_utility/persian_number_utility.dart';
+import 'package:alibaba/widgets/submit_button.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -362,7 +363,10 @@ class _HomeScreenState extends State<HomeScreen> {
                         );
                       },
                     ),
-                  )
+                  ),
+                  const Spacer(),
+                  const SubmitButton('جستجوی پرواز'),
+                  const SizedBox(height: 15)
                 ],
               ),
             ),
