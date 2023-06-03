@@ -13,12 +13,12 @@ class LoginScreen extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        body: Column(
-          children: const [
-            SizedBox(height: 52),
-            Padding(
-              padding: EdgeInsets.symmetric(vertical: 16, horizontal: 8),
-              child: Text(
+        body: Padding(
+          padding: const EdgeInsets.all(15),
+          child: Column(
+            children: const [
+              SizedBox(height: 52),
+              Text(
                 'ورود با کلمه عبور',
                 style: TextStyle(
                   fontSize: 22,
@@ -26,18 +26,16 @@ class LoginScreen extends StatelessWidget {
                   fontFamily: 'Vazir',
                 ),
               ),
-            ),
-            NameInput(),
-            PasswordInput(),
-            EmailInput(),
-            Expanded(
-              child: Align(
-                alignment: Alignment.bottomCenter,
-                child: SubmitButton('ورود به علی‌بابا'),
-              ),
-            ),
-            SizedBox(height: 10),
-          ],
+              SizedBox(height: 15),
+              NameInput(),
+              SizedBox(height: 15),
+              PasswordInput(),
+              SizedBox(height: 15),
+              EmailInput(),
+              Spacer(),
+              SubmitButton('ورود به علی‌بابا'),
+            ],
+          ),
         ),
       ),
     );
