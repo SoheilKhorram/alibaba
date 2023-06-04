@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+import 'package:alibaba/widgets/travel_info_text.dart';
+import 'package:alibaba/widgets/travel_info_date.dart';
+
 class SearchResultScreen extends StatefulWidget {
   const SearchResultScreen({super.key});
 
@@ -20,23 +23,13 @@ class _SearchResultScreenState extends State<SearchResultScreen> {
           Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.end,
-            children: const [
-              Text(
-                "بلیط هواپیما مبدا به مقصد",
-                style: TextStyle(
-                  fontSize: 18,
-                  fontFamily: 'Vazir',
-                  color: Colors.black,
-                ),
+            children: [
+              TravelInfoText(
+                transportationVehicle: "هواپیما",
+                originCity: "تهران",
+                destinationCity: "مشهد",
               ),
-              Text(
-                "۱۳۹۹/۰۵/۱۵",
-                style: TextStyle(
-                  fontSize: 14,
-                  fontFamily: 'Vazir',
-                  color: Colors.black45,
-                ),
-              ),
+              TravelInfoDate(date: "چهارشنبه ۲۵ اسفند")
             ],
           ),
           IconButton(
