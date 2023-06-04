@@ -41,6 +41,17 @@ class _SearchResultScreenState extends State<SearchResultScreen> {
             icon: const Icon(Icons.arrow_forward),
           ),
         ],
+        leading: Padding(
+          padding: const EdgeInsets.all(15.0),
+          child: CircleAvatar(
+            backgroundColor: const Color(0xFFFDB713),
+            child: IconButton(
+              onPressed: () {},
+              icon: const Icon(Icons.search, color: Colors.black),
+            ),
+          ),
+        ),
+        leadingWidth: 75,
       ),
     );
   }
