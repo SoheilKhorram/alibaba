@@ -1,17 +1,43 @@
 import 'package:flutter/material.dart';
 
-class NameInput extends StatelessWidget {
-  const NameInput({super.key});
+class NameInput extends StatefulWidget {
+  const NameInput({Key? key}) : super(key: key);
+
+  @override
+  // ignore: library_private_types_in_public_api
+  _NameInputState createState() => _NameInputState();
+}
+
+class _NameInputState extends State<NameInput> {
+  final TextEditingController _nameController = TextEditingController();
+  bool _showError = false;
+
+  @override
+  void dispose() {
+    _nameController.dispose();
+    super.dispose();
+  }
+
+  void validateInput(String value) {
+    setState(() {
+      _showError = value.isEmpty;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
-    return const SizedBox(
+    return SizedBox(
       child: Padding(
-        padding: EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+        padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
         child: Directionality(
           textDirection: TextDirection.rtl,
           child: TextField(
-            style: TextStyle(
+            controller: _nameController,
+            onChanged: validateInput,
+            onEditingComplete: () {
+              validateInput(_nameController.text);
+            },
+            style: const TextStyle(
               fontFamily: 'Vazir',
               fontSize: 16,
             ),
@@ -19,22 +45,28 @@ class NameInput extends StatelessWidget {
             cursorHeight: 24,
             cursorWidth: 1,
             decoration: InputDecoration(
-              prefixIcon: Icon(
+              prefixIcon: const Icon(
                 Icons.person_outline,
                 color: Colors.grey,
               ),
-              border: OutlineInputBorder(
+              border: const OutlineInputBorder(
                 borderRadius: BorderRadius.all(Radius.circular(8)),
               ),
-              focusedBorder: OutlineInputBorder(
+              focusedBorder: const OutlineInputBorder(
                 borderRadius: BorderRadius.all(Radius.circular(8)),
                 borderSide: BorderSide(
                   color: Color(0xFFFDB713),
                   width: 2.5,
                 ),
               ),
-              labelStyle: TextStyle(fontFamily: 'Vazir', color: Colors.grey),
+              labelStyle: const TextStyle(fontFamily: 'Vazir', color: Colors.grey),
               labelText: 'نام کاربری',
+              errorText: _showError ? 'نام نمی‌تواند خالی باشد' : null,
+              errorStyle: const TextStyle(
+                fontFamily: 'Vazir',
+                fontSize: 12,
+                color: Colors.red,
+              ),
             ),
           ),
         ),
