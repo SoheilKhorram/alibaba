@@ -15,6 +15,7 @@ class _SearchResultScreenState extends State<SearchResultScreen> {
     return Scaffold(
       appBar: AppBar(
         toolbarHeight: 75,
+        backgroundColor: Colors.white,
         actions: [
           Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -25,6 +26,7 @@ class _SearchResultScreenState extends State<SearchResultScreen> {
                 style: TextStyle(
                   fontSize: 18,
                   fontFamily: 'Vazir',
+                  color: Colors.black,
                 ),
               ),
               Text(
@@ -32,13 +34,14 @@ class _SearchResultScreenState extends State<SearchResultScreen> {
                 style: TextStyle(
                   fontSize: 14,
                   fontFamily: 'Vazir',
+                  color: Colors.black45,
                 ),
               ),
             ],
           ),
           IconButton(
             onPressed: () {},
-            icon: const Icon(Icons.arrow_forward),
+            icon: const Icon(Icons.arrow_forward, color: Colors.black54),
           ),
         ],
         leading: Padding(
