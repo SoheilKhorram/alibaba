@@ -12,9 +12,35 @@ class SearchResultScreen extends StatefulWidget {
 class _SearchResultScreenState extends State<SearchResultScreen> {
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Center(
-        child: Text('Search Result'),
+    return Scaffold(
+      appBar: AppBar(
+        toolbarHeight: 75,
+        actions: [
+          Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: const [
+              Text(
+                "بلیط هواپیما مبدا به مقصد",
+                style: TextStyle(
+                  fontSize: 18,
+                  fontFamily: 'Vazir',
+                ),
+              ),
+              Text(
+                "۱۳۹۹/۰۵/۱۵",
+                style: TextStyle(
+                  fontSize: 14,
+                  fontFamily: 'Vazir',
+                ),
+              ),
+            ],
+          ),
+          IconButton(
+            onPressed: () {},
+            icon: const Icon(Icons.arrow_forward),
+          ),
+        ],
       ),
     );
   }
