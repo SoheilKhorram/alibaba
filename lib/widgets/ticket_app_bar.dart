@@ -10,6 +10,8 @@ class TicketAppBar extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     return AppBar(
       toolbarHeight: 150,
+      elevation: 4,
+      shadowColor: Colors.black26,
       backgroundColor: Colors.white,
       actions: [
         Column(
