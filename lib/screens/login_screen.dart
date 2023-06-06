@@ -14,7 +14,7 @@ class LoginScreen extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         body: Column(
-          children: const [
+          children: [
             SizedBox(height: 52),
             Padding(
               padding: EdgeInsets.symmetric(vertical: 16, horizontal: 8),
