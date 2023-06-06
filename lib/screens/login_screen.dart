@@ -10,15 +10,15 @@ class LoginScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        body: Padding(
-          padding: const EdgeInsets.all(15),
-          child: Column(
-            children: const [
-              SizedBox(height: 52),
-              Text(
+        body: Column(
+          children: const [
+            SizedBox(height: 52),
+            Padding(
+              padding: EdgeInsets.symmetric(vertical: 16, horizontal: 8),
+              child: Text(
                 'ورود با کلمه عبور',
                 style: TextStyle(
                   fontSize: 22,
