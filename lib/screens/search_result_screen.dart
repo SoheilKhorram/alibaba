@@ -24,14 +24,16 @@ class _SearchResultScreenState extends State<SearchResultScreen> {
       body: Column(
         children: [
           const PriceDateList(),
-          const SizedBox(height: 10),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: const [
-              SortingDropDown(),
-              SizedBox(width: 16),
-              FilterButton(),
-            ],
+          Padding(
+            padding: const EdgeInsets.all(10),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: const [
+                SortingDropDown(),
+                SizedBox(width: 16),
+                FilterButton(),
+              ],
+            ),
           )
         ],
       ),
