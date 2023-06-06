@@ -10,11 +10,11 @@ class LoginScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         body: Column(
-          children: const [
+          children: [
             SizedBox(height: 52),
             Padding(
               padding: EdgeInsets.symmetric(vertical: 16, horizontal: 8),
