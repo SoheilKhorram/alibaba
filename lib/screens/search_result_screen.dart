@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 
 import 'package:alibaba/widgets/ticket_app_bar.dart';
 import 'package:alibaba/widgets/price_date_list.dart';
+import 'package:alibaba/widgets/sorting_drop_down.dart';
+import 'package:alibaba/widgets/filter_button.dart';
 
 class SearchResultScreen extends StatefulWidget {
   const SearchResultScreen({super.key});
@@ -13,13 +15,24 @@ class SearchResultScreen extends StatefulWidget {
 }
 
 class _SearchResultScreenState extends State<SearchResultScreen> {
+  String? dropdownValue;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: const TicketAppBar(),
       body: Column(
-        children: const [
-          PriceDateList(),
+        children: [
+          const PriceDateList(),
+          const SizedBox(height: 10),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: const [
+              SortingDropDown(),
+              SizedBox(width: 16),
+              FilterButton(),
+            ],
+          )
         ],
       ),
     );
