@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:persian_datetime_picker/persian_datetime_picker.dart';
-class date_picker extends StatelessWidget {
 
-  const date_picker({super.key});
+class DatePicker extends StatelessWidget {
+  const DatePicker({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -13,9 +13,13 @@ class date_picker extends StatelessWidget {
           initialDate: Jalali.now(),
           firstDate: Jalali(1390),
           lastDate: Jalali(1450),
-
         );
+        if (picked != null) {
+          print('Selected date: $picked');
+        }
+        Navigator.pop(context);
       },
+      child: Container(),
     );
   }
 }

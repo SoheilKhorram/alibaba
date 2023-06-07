@@ -1,16 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:alibaba/widgets/date_picker.dart';
-import 'packa';
-// ignore: must_be_immutable
-class TravelDate extends StatefulWidget {
-  TravelDate({super.key, required this.text});
 
-  String text;
+import 'date_picker.dart';
+
+class TravelDate extends StatefulWidget {
+  final String text;
+
+  const TravelDate({Key? key, required this.text}) : super(key: key);
 
   @override
-  State<TravelDate> createState() {
-    return _TravelDateState();
-  }
+  _TravelDateState createState() => _TravelDateState();
 }
 
 class _TravelDateState extends State<TravelDate> {
@@ -34,7 +32,14 @@ class _TravelDateState extends State<TravelDate> {
               fontSize: 15,
             ),
           ),
-          onPressed: () { const date_picker();},
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const DatePicker(),
+              ),
+            );
+          },
           style: OutlinedButton.styleFrom(
             backgroundColor: const Color(0x05000000),
             side: BorderSide.none,
@@ -44,3 +49,4 @@ class _TravelDateState extends State<TravelDate> {
     );
   }
 }
+
