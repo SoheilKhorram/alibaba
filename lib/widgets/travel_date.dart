@@ -38,8 +38,8 @@ class _TravelDateState extends State<TravelDate> {
             final Jalali? picked = await showPersianDatePicker(
               context: context,
               initialDate: Jalali.now(),
-              firstDate: Jalali(1390),
-              lastDate: Jalali(1450),
+              firstDate: Jalali(Jalali.now().year,Jalali.now().month,Jalali.now().day),
+              lastDate: Jalali(1420),
             );
 
             if (picked != null) {
