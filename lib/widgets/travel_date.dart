@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-
+import 'package:alibaba/widgets/date_picker.dart';
+import 'packa';
 // ignore: must_be_immutable
 class TravelDate extends StatefulWidget {
   TravelDate({super.key, required this.text});
@@ -33,7 +34,7 @@ class _TravelDateState extends State<TravelDate> {
               fontSize: 15,
             ),
           ),
-          onPressed: () {},
+          onPressed: () { const date_picker();},
           style: OutlinedButton.styleFrom(
             backgroundColor: const Color(0x05000000),
             side: BorderSide.none,
