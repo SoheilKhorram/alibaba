@@ -104,7 +104,7 @@ class _TravelDateState extends State<TravelDate> {
             }
           },
           style: OutlinedButton.styleFrom(
-            backgroundColor: Colors.yellow,
+            backgroundColor: Colors.white,
             side: BorderSide.none,
           ),
         ),

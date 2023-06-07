@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:persian_datetime_picker/persian_datetime_picker.dart';
 
-
 class TravelDate extends StatefulWidget {
   final String text;
 
@@ -28,17 +27,18 @@ class _TravelDateState extends State<TravelDate> {
           ),
           label: Text(
             _selectedDate != null ? _selectedDate!.formatFullDate() : widget.text,
-            style: const TextStyle(
-              color: Colors.grey,
+            style: TextStyle(
+              color: _selectedDate != null ? Colors.black : Colors.grey,
               fontFamily: 'Vazir',
               fontSize: 15,
+              fontWeight: _selectedDate != null ? FontWeight.bold : FontWeight.normal,
             ),
           ),
           onPressed: () async {
             final Jalali? picked = await showPersianDatePicker(
               context: context,
               initialDate: Jalali.now(),
-              firstDate: Jalali(Jalali.now().year,Jalali.now().month,Jalali.now().day),
+              firstDate: Jalali(Jalali.now().year, Jalali.now().month, Jalali.now().day),
               lastDate: Jalali(1420),
             );
 

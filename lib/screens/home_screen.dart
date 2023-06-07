@@ -109,9 +109,9 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
+                      children: const [
                         Expanded(child: TravelDate(text: "تاریخ برگشت")),
-                        const SizedBox(
+                        SizedBox(
                             width: 1,
                             height: 45,
                             child: DecoratedBox(
