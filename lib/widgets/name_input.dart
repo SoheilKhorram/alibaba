@@ -4,7 +4,6 @@ class NameInput extends StatefulWidget {
   const NameInput({Key? key}) : super(key: key);
 
   @override
-  // ignore: library_private_types_in_public_api
   _NameInputState createState() => _NameInputState();
 }
 
@@ -22,6 +21,14 @@ class _NameInputState extends State<NameInput> {
     setState(() {
       _showError = value.isEmpty;
     });
+  }
+
+  TextStyle _getErrorTextStyle() {
+    return const TextStyle(
+      fontFamily: 'Vazir',
+      fontSize: 12,
+      color: Colors.red,
+    );
   }
 
   @override
@@ -62,11 +69,7 @@ class _NameInputState extends State<NameInput> {
               labelStyle: const TextStyle(fontFamily: 'Vazir', color: Colors.grey),
               labelText: 'نام کاربری',
               errorText: _showError ? 'نام نمی‌تواند خالی باشد' : null,
-              errorStyle: const TextStyle(
-                fontFamily: 'Vazir',
-                fontSize: 12,
-                color: Colors.red,
-              ),
+              errorStyle: _getErrorTextStyle(),
             ),
           ),
         ),
