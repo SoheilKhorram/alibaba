@@ -26,7 +26,7 @@ class _SearchResultScreenState extends State<SearchResultScreen> {
         children: [
           const PriceDateList(),
           Padding(
-            padding: const EdgeInsets.all(10),
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: const [
@@ -37,7 +37,7 @@ class _SearchResultScreenState extends State<SearchResultScreen> {
             ),
           ),
           const Padding(
-            padding: EdgeInsets.symmetric(horizontal: 10),
+            padding: EdgeInsets.symmetric(horizontal: 16),
             child: Ticket(),
           ),
         ],

@@ -23,7 +23,7 @@ class Line extends StatelessWidget {
             ),
           ),
           Container(
-            width: 136,
+            width: 120,
             height: 1,
             color: const Color(0xffbec6cc),
           ),

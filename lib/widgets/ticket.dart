@@ -13,6 +13,9 @@ class Ticket extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
+        boxShadow: const [
+          BoxShadow(color: Color.fromARGB(20, 0, 0, 0), blurRadius: 5)
+        ],
         color: Colors.white,
         border: Border.all(
           color: const Color(0x25000000),
