@@ -12,6 +12,7 @@ class Ticket extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      margin: const EdgeInsets.only(bottom: 12),
       decoration: BoxDecoration(
         boxShadow: const [
           BoxShadow(color: Color.fromARGB(20, 0, 0, 0), blurRadius: 5)

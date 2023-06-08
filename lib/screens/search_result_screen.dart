@@ -36,9 +36,20 @@ class _SearchResultScreenState extends State<SearchResultScreen> {
               ],
             ),
           ),
-          const Padding(
-            padding: EdgeInsets.symmetric(horizontal: 16),
-            child: Ticket(),
+          Expanded(
+            child: ListView(
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              children: [
+                ListView.builder(
+                  shrinkWrap: true,
+                  physics: const ClampingScrollPhysics(),
+                  itemCount: 5,
+                  itemBuilder: (BuildContext context, int index) {
+                    return const Ticket();
+                  },
+                )
+              ],
+            ),
           ),
         ],
       ),
