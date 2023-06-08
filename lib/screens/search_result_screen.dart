@@ -4,6 +4,7 @@ import 'package:alibaba/widgets/ticket_app_bar.dart';
 import 'package:alibaba/widgets/price_date_list.dart';
 import 'package:alibaba/widgets/sorting_drop_down.dart';
 import 'package:alibaba/widgets/filter_button.dart';
+import 'package:alibaba/widgets/ticket.dart';
 
 class SearchResultScreen extends StatefulWidget {
   const SearchResultScreen({super.key});
@@ -34,7 +35,11 @@ class _SearchResultScreenState extends State<SearchResultScreen> {
                 FilterButton(),
               ],
             ),
-          )
+          ),
+          const Padding(
+            padding: EdgeInsets.symmetric(horizontal: 10),
+            child: Ticket(),
+          ),
         ],
       ),
     );
