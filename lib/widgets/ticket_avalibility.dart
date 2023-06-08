@@ -37,6 +37,24 @@ class TicketAvalibility extends StatelessWidget {
               color: Color(0xff0077db),
             ),
           ),
+          const Spacer(),
+          const Text(
+            'صندلی باقی مانده',
+            style: TextStyle(
+              fontSize: 10,
+              fontFamily: 'Vazir',
+              color: Color(0xffdc3545),
+            ),
+          ),
+          const SizedBox(width: 4),
+          Text(
+            numberOfRemainingSeats!.toPersianDigit(),
+            style: const TextStyle(
+              fontSize: 10,
+              fontFamily: 'Vazir',
+              color: Color(0xffdc3545),
+            ),
+          ),
         ],
       ),
     );
