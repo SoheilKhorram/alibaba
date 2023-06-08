@@ -62,7 +62,7 @@ class Ticket extends StatelessWidget {
               child: DecoratedBox(
                 decoration: BoxDecoration(color: Color(0x25000000)),
               )),
-          TicketAvalibility(price: '1200000', numberOfRemainingSeats: '7'),
+          TicketAvalibility(isAvailable: false),
         ],
       ),
     );

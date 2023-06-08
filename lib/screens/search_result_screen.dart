@@ -43,7 +43,7 @@ class _SearchResultScreenState extends State<SearchResultScreen> {
                 ListView.builder(
                   shrinkWrap: true,
                   physics: const ClampingScrollPhysics(),
-                  itemCount: 5,
+                  itemCount: 1,
                   itemBuilder: (BuildContext context, int index) {
                     return const Ticket();
                   },
