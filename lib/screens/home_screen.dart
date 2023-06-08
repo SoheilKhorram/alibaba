@@ -7,7 +7,7 @@ import 'package:alibaba/widgets/travel_date.dart';
 import 'package:alibaba/widgets/traveler_input.dart';
 
 class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
+  const HomeScreen({Key? key}) : super(key: key);
 
   @override
   State<HomeScreen> createState() {
@@ -82,42 +82,59 @@ class _HomeScreenState extends State<HomeScreen> {
                 children: [
                   Container(
                     decoration: BoxDecoration(
-                        color: const Color(0x05000000),
-                        borderRadius: BorderRadius.circular(10),
-                        border: Border.all(
-                          color: Colors.grey,
-                        )),
+                      color: const Color(0x05000000),
+                      borderRadius: BorderRadius.circular(10),
+                      border: Border.all(
+                        color: Colors.grey,
+                      ),
+                    ),
                     child: Column(
                       children: [
                         TravelCity(updateCity: updateCity, hintText: "مبدا"),
                         const SizedBox(
-                            height: 1,
-                            width: double.infinity,
-                            child: DecoratedBox(
-                              decoration: BoxDecoration(color: Colors.grey),
-                            )),
-                        TravelCity(updateCity: updateCity, hintText: "مقصد")
+                          height: 1,
+                          width: double.infinity,
+                          child: DecoratedBox(
+                            decoration: BoxDecoration(color: Colors.grey),
+                          ),
+                        ),
+                        TravelCity(updateCity: updateCity, hintText: "مقصد"),
                       ],
                     ),
                   ),
                   const SizedBox(height: 25),
+
                   Container(
                     decoration: BoxDecoration(
                       border: Border.all(color: Colors.grey),
                       borderRadius: BorderRadius.circular(10),
                       color: const Color(0x05000000),
+
                     ),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
+                      mainAxisSize: MainAxisSize.max,
                       children: const [
-                        Expanded(child: TravelDate(text: "تاریخ برگشت")),
+                        Expanded(
+                          child: TravelDate(
+                            text: "تاریخ برگشت",
+                            helpText: "برگشت",
+                          ),
+                        ),
                         SizedBox(
-                            width: 1,
-                            height: 45,
-                            child: DecoratedBox(
-                              decoration: BoxDecoration(color: Colors.grey),
-                            )),
-                        Expanded(child: TravelDate(text: "تاریخ رفت")),
+                          width: 2,
+                          height: 64,
+                          child: DecoratedBox(
+                            decoration: BoxDecoration(color: Colors.grey),
+                          ),
+                        ),
+                        Expanded(
+                          child: TravelDate(
+                            text: "تاریخ رفت",
+                            helpText: "رفت",
+
+                          ),
+                        ),
                       ],
                     ),
                   ),
@@ -125,7 +142,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   const TravelerInput(),
                   const Spacer(),
                   const SubmitButton('جستجوی پرواز'),
-                  const SizedBox(height: 15)
+                  const SizedBox(height: 15),
                 ],
               ),
             ),
