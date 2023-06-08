@@ -45,7 +45,27 @@ class _SearchResultScreenState extends State<SearchResultScreen> {
                   physics: const ClampingScrollPhysics(),
                   itemCount: 1,
                   itemBuilder: (BuildContext context, int index) {
-                    return const Ticket();
+                    return Ticket(isAvailable: true);
+                  },
+                ),
+                Container(
+                  margin: const EdgeInsets.only(top: 32, bottom: 12),
+                  child: const Text(
+                    'پروازهای تکمیل ظرفیت',
+                    textAlign: TextAlign.end,
+                    style: TextStyle(
+                      fontFamily: 'Vazir',
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+                ListView.builder(
+                  shrinkWrap: true,
+                  physics: const ClampingScrollPhysics(),
+                  itemCount: 1,
+                  itemBuilder: (BuildContext context, int index) {
+                    return Ticket(isAvailable: false);
                   },
                 )
               ],

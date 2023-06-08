@@ -7,17 +7,22 @@ import 'package:alibaba/widgets/ticket_time.dart';
 import 'package:alibaba/widgets/ticket_avalibility.dart';
 
 class Ticket extends StatelessWidget {
-  const Ticket({super.key});
+  Ticket({super.key, required this.isAvailable});
+
+  bool isAvailable;
 
   @override
   Widget build(BuildContext context) {
+    Color backgroundColor =
+        isAvailable ? Colors.white : const Color(0xfff8fafb);
+
     return Container(
       margin: const EdgeInsets.only(bottom: 12),
       decoration: BoxDecoration(
         boxShadow: const [
           BoxShadow(color: Color.fromARGB(20, 0, 0, 0), blurRadius: 5)
         ],
-        color: Colors.white,
+        color: backgroundColor,
         border: Border.all(
           color: const Color(0x25000000),
           width: 1,
@@ -62,7 +67,11 @@ class Ticket extends StatelessWidget {
               child: DecoratedBox(
                 decoration: BoxDecoration(color: Color(0x25000000)),
               )),
-          TicketAvalibility(isAvailable: false),
+          TicketAvalibility(
+            isAvailable: isAvailable,
+            price: '1200000',
+            numberOfRemainingSeats: '2',
+          ),
         ],
       ),
     );
