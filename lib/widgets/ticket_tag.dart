@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 // ignore: must_be_immutable
-class Tag extends StatelessWidget {
-  Tag(this.text, {super.key});
+class TicketTag extends StatelessWidget {
+  TicketTag(this.text, {super.key});
 
   String text;
 

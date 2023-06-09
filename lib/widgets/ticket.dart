@@ -7,9 +7,22 @@ import 'package:alibaba/widgets/ticket_time.dart';
 import 'package:alibaba/widgets/ticket_avalibility.dart';
 
 class Ticket extends StatelessWidget {
-  Ticket({super.key, required this.isAvailable});
+  Ticket({
+    super.key,
+    required this.isAvailable,
+    required this.departureTime,
+    required this.arrivalTime,
+    required this.tags,
+    this.price,
+    this.numberOfRemainingSeats,
+  });
 
   bool isAvailable;
+  String departureTime;
+  String arrivalTime;
+  List<String> tags;
+  int? price;
+  int? numberOfRemainingSeats;
 
   @override
   Widget build(BuildContext context) {
@@ -44,14 +57,17 @@ class Ticket extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
                     Row(
-                      children: [Tag('سیستمی'), Tag('اکونومی'), Tag('M37')],
+                      children: [
+                        for (int i = 0; i < tags.length; i++)
+                          TicketTag(tags[i]),
+                      ],
                     ),
                     const SizedBox(height: 20),
                     Row(
-                      children: const [
-                        TicketTime(time: '22:30'),
-                        Line(),
-                        TicketTime(time: '22:30'),
+                      children: [
+                        TicketTime(time: arrivalTime),
+                        const Line(),
+                        TicketTime(time: departureTime),
                       ],
                     ),
                   ],
@@ -69,8 +85,8 @@ class Ticket extends StatelessWidget {
               )),
           TicketAvalibility(
             isAvailable: isAvailable,
-            price: '1200000',
-            numberOfRemainingSeats: '2',
+            price: price.toString(),
+            numberOfRemainingSeats: numberOfRemainingSeats.toString(),
           ),
         ],
       ),

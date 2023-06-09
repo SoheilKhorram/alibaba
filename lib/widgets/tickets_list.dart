@@ -24,7 +24,14 @@ class TicketsList extends StatelessWidget {
             physics: const ClampingScrollPhysics(),
             itemCount: numberOfAvailableTickets,
             itemBuilder: (BuildContext context, int index) {
-              return Ticket(isAvailable: true);
+              return Ticket(
+                isAvailable: true,
+                price: 1000000,
+                tags: const ['اکونومی', 'سیستمی', 'M37'],
+                departureTime: '12:00',
+                arrivalTime: '21:40',
+                numberOfRemainingSeats: 10,
+              );
             },
           ),
           if (numberOfFullCapacityTickets > 0)
@@ -45,7 +52,12 @@ class TicketsList extends StatelessWidget {
             physics: const ClampingScrollPhysics(),
             itemCount: numberOfFullCapacityTickets,
             itemBuilder: (BuildContext context, int index) {
-              return Ticket(isAvailable: false);
+              return Ticket(
+                isAvailable: false,
+                tags: const ['اکونومی', 'سیستمی', 'M37'],
+                departureTime: '12:00',
+                arrivalTime: '14:00',
+              );
             },
           )
         ],
