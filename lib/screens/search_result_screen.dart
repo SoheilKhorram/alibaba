@@ -4,7 +4,7 @@ import 'package:alibaba/widgets/ticket_app_bar.dart';
 import 'package:alibaba/widgets/price_date_list.dart';
 import 'package:alibaba/widgets/sorting_drop_down.dart';
 import 'package:alibaba/widgets/filter_button.dart';
-import 'package:alibaba/widgets/ticket.dart';
+import 'package:alibaba/widgets/tickets_list.dart';
 
 class SearchResultScreen extends StatefulWidget {
   const SearchResultScreen({super.key});
@@ -36,41 +36,10 @@ class _SearchResultScreenState extends State<SearchResultScreen> {
               ],
             ),
           ),
-          Expanded(
-            child: ListView(
-              padding: const EdgeInsets.symmetric(horizontal: 16),
-              children: [
-                ListView.builder(
-                  shrinkWrap: true,
-                  physics: const ClampingScrollPhysics(),
-                  itemCount: 1,
-                  itemBuilder: (BuildContext context, int index) {
-                    return Ticket(isAvailable: true);
-                  },
-                ),
-                Container(
-                  margin: const EdgeInsets.only(top: 32, bottom: 12),
-                  child: const Text(
-                    'پروازهای تکمیل ظرفیت',
-                    textAlign: TextAlign.end,
-                    style: TextStyle(
-                      fontFamily: 'Vazir',
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ),
-                ListView.builder(
-                  shrinkWrap: true,
-                  physics: const ClampingScrollPhysics(),
-                  itemCount: 1,
-                  itemBuilder: (BuildContext context, int index) {
-                    return Ticket(isAvailable: false);
-                  },
-                )
-              ],
-            ),
-          ),
+          TicketsList(
+            numberOfAvailableTickets: 5,
+            numberOfFullCapacityTickets: 3,
+          )
         ],
       ),
     );
