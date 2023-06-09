@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:persian_datetime_picker/persian_datetime_picker.dart';
+import 'package:persian_number_utility/persian_number_utility.dart';
 
 class TravelDate extends StatefulWidget {
   final String text;
-  final String helpText;
 
-  const TravelDate({Key? key, required this.text, required this.helpText}) : super(key: key);
+  const TravelDate({Key? key, required this.text}) : super(key: key);
 
   @override
   _TravelDateState createState() => _TravelDateState();
@@ -17,27 +17,22 @@ class _TravelDateState extends State<TravelDate> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 64,
+      height: 48,
       child: Directionality(
         textDirection: TextDirection.rtl,
         child: Column(
           children: [
-            Text(
-              widget.helpText,
-              style: const TextStyle(
-                color: Colors.grey,
-                fontFamily: 'Vazir',
-                fontSize: 10,
-              ),
-            ),
             OutlinedButton.icon(
               icon: const Icon(
                 Icons.calendar_month_outlined,
                 color: Colors.grey,
-                size: 30,
+                size: 20,
               ),
               label: Text(
-                _selectedDate != null ? _selectedDate!.formatFullDate() : widget.text,
+                _selectedDate != null
+                    ? '${_selectedDate!.year}/${_selectedDate!.month}/${_selectedDate!.day}'
+                        .toPersianDigit()
+                    : widget.text,
                 style: TextStyle(
                   color: _selectedDate != null ? Colors.black : Colors.grey,
                   fontFamily: 'Vazir',
@@ -46,14 +41,13 @@ class _TravelDateState extends State<TravelDate> {
               ),
               onPressed: () async {
                 final Jalali? picked = await showPersianDatePicker(
-                  helpText: widget.helpText,
-                  fieldLabelText: 'ورود تاریخ',
                   context: context,
-                  initialDate: Jalali.now(),
-                  firstDate: Jalali(Jalali.now().year, Jalali.now().month, Jalali.now().day),
+                  initialDate:
+                      _selectedDate == null ? Jalali.now() : _selectedDate!,
+                  firstDate: Jalali(
+                      Jalali.now().year, Jalali.now().month, Jalali.now().day),
                   lastDate: Jalali(1420),
                 );
-
                 if (picked != null) {
                   setState(() {
                     _selectedDate = picked;

@@ -103,13 +103,11 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                   ),
                   const SizedBox(height: 25),
-
                   Container(
                     decoration: BoxDecoration(
                       border: Border.all(color: Colors.grey),
                       borderRadius: BorderRadius.circular(10),
                       color: const Color(0x05000000),
-
                     ),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -118,12 +116,11 @@ class _HomeScreenState extends State<HomeScreen> {
                         Expanded(
                           child: TravelDate(
                             text: "تاریخ برگشت",
-                            helpText: "برگشت",
                           ),
                         ),
                         SizedBox(
-                          width: 2,
-                          height: 64,
+                          width: 1,
+                          height: 48,
                           child: DecoratedBox(
                             decoration: BoxDecoration(color: Colors.grey),
                           ),
@@ -131,8 +128,6 @@ class _HomeScreenState extends State<HomeScreen> {
                         Expanded(
                           child: TravelDate(
                             text: "تاریخ رفت",
-                            helpText: "رفت",
-
                           ),
                         ),
                       ],
