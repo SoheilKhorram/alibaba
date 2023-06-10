@@ -6,17 +6,15 @@ class TicketAvalibility extends StatelessWidget {
   TicketAvalibility({
     super.key,
     this.price,
-    this.numberOfRemainingSeats,
-    required this.isAvailable,
+    required this.numberOfRemainingSeats,
   });
 
-  String? price;
-  String? numberOfRemainingSeats;
-  bool isAvailable;
+  int? price;
+  int numberOfRemainingSeats;
 
   @override
   Widget build(BuildContext context) {
-    if (isAvailable) {
+    if (numberOfRemainingSeats > 0) {
       return Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
         child: Row(
@@ -31,7 +29,7 @@ class TicketAvalibility extends StatelessWidget {
             ),
             const SizedBox(width: 4),
             Text(
-              price!.toPersianDigit().seRagham(),
+              price!.toString().toPersianDigit().seRagham(),
               style: const TextStyle(
                 fontSize: 20,
                 fontFamily: 'Vazir',
@@ -50,7 +48,7 @@ class TicketAvalibility extends StatelessWidget {
             ),
             const SizedBox(width: 4),
             Text(
-              numberOfRemainingSeats!.toPersianDigit(),
+              numberOfRemainingSeats.toString().toPersianDigit(),
               style: const TextStyle(
                 fontSize: 10,
                 fontFamily: 'Vazir',

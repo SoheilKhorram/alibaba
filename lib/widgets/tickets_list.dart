@@ -1,20 +1,45 @@
 import 'package:flutter/material.dart';
 
 import 'package:alibaba/widgets/ticket.dart';
+import 'package:alibaba/models/ticketmod.dart';
 
-// ignore: must_be_immutable
 class TicketsList extends StatelessWidget {
   TicketsList({
-    super.key,
+    Key? key,
     required this.numberOfAvailableTickets,
     required this.numberOfFullCapacityTickets,
-  });
+  }) : super(key: key);
 
   int numberOfAvailableTickets;
   int numberOfFullCapacityTickets;
 
   @override
   Widget build(BuildContext context) {
+    List<Ticketmod> availableTickets = [
+      Ticketmod(
+        price: 1000000,
+        tags: const ['اکونومی', 'سیستمی', 'M37'],
+        departureTime: '12:00',
+        arrivalTime: '21:40',
+        numberOfRemainingSeats: 10,
+      ),
+    ];
+
+    List<Ticketmod> fullCapacityTickets = [
+      Ticketmod(
+        tags: const ['اکونومی', 'سیستمی', 'M37'],
+        departureTime: '12:00',
+        arrivalTime: '14:00',
+        numberOfRemainingSeats: 0,
+      ),
+      Ticketmod(
+        tags: const ['اکونومی', 'سیستمی', 'M37'],
+        departureTime: '23:30',
+        arrivalTime: '34:00',
+        numberOfRemainingSeats: 0,
+      ),
+    ];
+
     return Expanded(
       child: ListView(
         padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -22,15 +47,16 @@ class TicketsList extends StatelessWidget {
           ListView.builder(
             shrinkWrap: true,
             physics: const ClampingScrollPhysics(),
-            itemCount: numberOfAvailableTickets,
+            itemCount: availableTickets.length,
             itemBuilder: (BuildContext context, int index) {
+              Ticketmod ticket = availableTickets[index];
+
               return Ticket(
-                isAvailable: true,
-                price: 1000000,
-                tags: const ['اکونومی', 'سیستمی', 'M37'],
-                departureTime: '12:00',
-                arrivalTime: '21:40',
-                numberOfRemainingSeats: 10,
+                price: ticket.price,
+                tags: ticket.tags,
+                departureTime: ticket.departureTime,
+                arrivalTime: ticket.arrivalTime,
+                numberOfRemainingSeats: ticket.numberOfRemainingSeats,
               );
             },
           ),
@@ -50,13 +76,14 @@ class TicketsList extends StatelessWidget {
           ListView.builder(
             shrinkWrap: true,
             physics: const ClampingScrollPhysics(),
-            itemCount: numberOfFullCapacityTickets,
+            itemCount: fullCapacityTickets.length,
             itemBuilder: (BuildContext context, int index) {
+              Ticketmod ticket = fullCapacityTickets[index];
               return Ticket(
-                isAvailable: false,
-                tags: const ['اکونومی', 'سیستمی', 'M37'],
-                departureTime: '12:00',
-                arrivalTime: '14:00',
+                tags: ticket.tags,
+                departureTime: ticket.departureTime,
+                arrivalTime: ticket.arrivalTime,
+                numberOfRemainingSeats: ticket.numberOfRemainingSeats,
               );
             },
           )
