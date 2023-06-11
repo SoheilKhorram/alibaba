@@ -13,18 +13,29 @@ class PriceDateList extends StatefulWidget {
 }
 
 class _PriceDateListState extends State<PriceDateList> {
-  int currentIndex = 0;
   final int itemCount = 10;
+  final double itemWidth = 80.0;
+
+  late ScrollController _scrollController;
+  int currentIndex = 0;
+
+  @override
+  void initState() {
+    _scrollController = ScrollController();
+    super.initState();
+  }
 
   void navigateToPrevious() {
     setState(() {
       currentIndex = currentIndex > 0 ? currentIndex - 1 : 0;
+      _scrollController.animateTo(currentIndex * itemWidth, duration: const Duration(milliseconds: 300), curve: Curves.easeInOut);
     });
   }
 
   void navigateToNext() {
     setState(() {
       currentIndex = currentIndex < itemCount - 1 ? currentIndex + 1 : itemCount - 1;
+      _scrollController.animateTo(currentIndex * itemWidth, duration: const Duration(milliseconds: 300), curve: Curves.easeInOut);
     });
   }
 
@@ -57,11 +68,12 @@ class _PriceDateListState extends State<PriceDateList> {
             height: 64,
             padding: const EdgeInsets.only(top: 10, bottom: 10),
             child: ListView.builder(
+              controller: _scrollController,
               scrollDirection: Axis.horizontal,
               itemCount: itemCount,
               itemBuilder: (context, index) {
                 return Container(
-                  width: 80.0,
+                  width: itemWidth,
                   decoration: BoxDecoration(
                     border: Border(
                       right: BorderSide(
