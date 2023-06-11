@@ -13,11 +13,30 @@ class PriceDateList extends StatefulWidget {
 }
 
 class _PriceDateListState extends State<PriceDateList> {
-  final int itemCount = 10;
-  final double itemWidth = 80.0;
-
   late ScrollController _scrollController;
   int currentIndex = 0;
+
+  List<String> dates = [
+    "ج - 28/04",
+    "ج - 29/04",
+    "ج - 30/04",
+    "ج - 30/04",
+    "ج - 30/04",
+    "ج - 30/04",
+    "ج - 30/04",
+    // Add this section to be sure about navigate to next date-price
+  ];
+
+  List<int> prices = [
+    1238,
+    1500,
+    1320,
+    1310,
+    1340,
+    1370,
+    1350,
+    // Add this section to be sure about navigate to next date-price
+  ];
 
   @override
   void initState() {
@@ -28,16 +47,24 @@ class _PriceDateListState extends State<PriceDateList> {
   void navigateToPrevious() {
     setState(() {
       currentIndex = currentIndex > 0 ? currentIndex - 1 : 0;
-      _scrollController.animateTo(currentIndex * itemWidth, duration: const Duration(milliseconds: 300), curve: Curves.easeInOut);
+      _scrollController.animateTo(currentIndex * itemWidth,
+          duration: const Duration(milliseconds: 300),
+          curve: Curves.easeInOut);
     });
   }
 
   void navigateToNext() {
     setState(() {
-      currentIndex = currentIndex < itemCount - 1 ? currentIndex + 1 : itemCount - 1;
-      _scrollController.animateTo(currentIndex * itemWidth, duration: const Duration(milliseconds: 300), curve: Curves.easeInOut);
+      currentIndex = currentIndex < dates.length - 1
+          ? currentIndex + 1
+          : dates.length - 1;
+      _scrollController.animateTo(currentIndex * itemWidth,
+          duration: const Duration(milliseconds: 300),
+          curve: Curves.easeInOut);
     });
   }
+
+  double get itemWidth => MediaQuery.of(context).size.width / 4;
 
   @override
   Widget build(BuildContext context) {
@@ -70,22 +97,26 @@ class _PriceDateListState extends State<PriceDateList> {
             child: ListView.builder(
               controller: _scrollController,
               scrollDirection: Axis.horizontal,
-              itemCount: itemCount,
+              itemCount: dates.length,
               itemBuilder: (context, index) {
                 return Container(
                   width: itemWidth,
                   decoration: BoxDecoration(
                     border: Border(
                       right: BorderSide(
-                        color: currentIndex == index ? Colors.blue : Colors.black26,
+                        color: currentIndex == index
+                            ? Colors.blue
+                            : Colors.black26,
                         width: 1.0,
                       ),
                     ),
                   ),
+                  padding: const EdgeInsets.symmetric(horizontal: 8),
                   child: Column(
                     children: [
-                      Dates(date: "ج - 28/04"),
-                      Prices(price: 1238),
+                      Dates(date: dates[index]),
+                      const SizedBox(height: 1),
+                      Prices(price: prices[index]),
                     ],
                   ),
                 );
