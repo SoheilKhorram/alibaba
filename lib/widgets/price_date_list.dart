@@ -13,6 +13,21 @@ class PriceDateList extends StatefulWidget {
 }
 
 class _PriceDateListState extends State<PriceDateList> {
+  int currentIndex = 0;
+  final int itemCount = 10;
+
+  void navigateToPrevious() {
+    setState(() {
+      currentIndex = currentIndex > 0 ? currentIndex - 1 : 0;
+    });
+  }
+
+  void navigateToNext() {
+    setState(() {
+      currentIndex = currentIndex < itemCount - 1 ? currentIndex + 1 : itemCount - 1;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -29,7 +44,7 @@ class _PriceDateListState extends State<PriceDateList> {
             height: 64,
             color: const Color(0x05000000),
             child: IconButton(
-              onPressed: () {},
+              onPressed: navigateToPrevious,
               icon: const Icon(
                 Icons.arrow_back_ios,
                 color: Colors.grey,
@@ -43,20 +58,20 @@ class _PriceDateListState extends State<PriceDateList> {
             padding: const EdgeInsets.only(top: 10, bottom: 10),
             child: ListView.builder(
               scrollDirection: Axis.horizontal,
-              itemCount: 10,
+              itemCount: itemCount,
               itemBuilder: (context, index) {
                 return Container(
                   width: 80.0,
-                  decoration: const BoxDecoration(
+                  decoration: BoxDecoration(
                     border: Border(
                       right: BorderSide(
-                        color: Colors.black26,
+                        color: currentIndex == index ? Colors.blue : Colors.black26,
                         width: 1.0,
                       ),
                     ),
                   ),
                   child: Column(
-                    children: const [
+                    children: [
                       Dates(date: "ج - 28/04"),
                       Prices(price: 1238),
                     ],
@@ -70,7 +85,7 @@ class _PriceDateListState extends State<PriceDateList> {
             height: 64,
             color: const Color(0x05000000),
             child: IconButton(
-              onPressed: () {},
+              onPressed: navigateToNext,
               icon: const Icon(
                 Icons.arrow_forward_ios,
                 color: Colors.grey,
