@@ -6,8 +6,11 @@ import 'package:alibaba/widgets/travel_city.dart';
 import 'package:alibaba/widgets/travel_date.dart';
 import 'package:alibaba/widgets/traveler_input.dart';
 
+import '../widgets/date_picker.dart';
+
+
 class HomeScreen extends StatefulWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+  const HomeScreen({super.key});
 
   @override
   State<HomeScreen> createState() {
@@ -18,6 +21,7 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   String? originCity;
   String? destinationCity;
+  DateTime? selectedDate;
 
   void updateCity(String? city, String hintText) {
     setState(() {
@@ -26,6 +30,12 @@ class _HomeScreenState extends State<HomeScreen> {
       } else {
         originCity = city;
       }
+    });
+  }
+
+  void handleDateSelected(DateTime? selectedDate) {
+    setState(() {
+      this.selectedDate = selectedDate;
     });
   }
 
@@ -111,25 +121,15 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
-                      mainAxisSize: MainAxisSize.max,
-                      children: const [
-                        Expanded(
-                          child: TravelDate(
-                            text: "تاریخ برگشت",
-                          ),
-                        ),
-                        SizedBox(
-                          width: 1,
-                          height: 48,
-                          child: DecoratedBox(
-                            decoration: BoxDecoration(color: Colors.grey),
-                          ),
-                        ),
-                        Expanded(
-                          child: TravelDate(
-                            text: "تاریخ رفت",
-                          ),
-                        ),
+                      children: [
+                        Expanded(child: TravelDate(text: "تاریخ برگشت")),
+                        const SizedBox(
+                            width: 1,
+                            height: 45,
+                            child: DecoratedBox(
+                              decoration: BoxDecoration(color: Colors.grey),
+                            )),
+                        Expanded(child: TravelDate(text: "تاریخ رفت")),
                       ],
                     ),
                   ),
