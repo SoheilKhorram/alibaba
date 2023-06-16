@@ -1,3 +1,4 @@
+import 'package:alibaba/widgets/submit_button.dart';
 import 'package:flutter/material.dart';
 
 import '../widgets/custom_name_input.dart';
@@ -30,8 +31,8 @@ class _MySteperPageState extends State<MySteperPage> {
                       ),
                     )
                   : IconButton(
-                      icon: const Column(
-                        children: [
+                      icon: Column(
+                        children: const [
                           Icon(Icons.upload_rounded),
                         ],
                       ),
@@ -126,8 +127,8 @@ class _MySteperPageState extends State<MySteperPage> {
                 const SizedBox(height: 15),
                 // for National Card
                 if (selectedGender == 0)
-                  const Column(
-                    children: [
+                  Column(
+                    children: const [
                       CustomNameInput(text: 'کد ملی'),
                       SizedBox(height: 15),
                       CustomNameInput(text: 'نام'),
@@ -137,8 +138,8 @@ class _MySteperPageState extends State<MySteperPage> {
                   ),
                 //PassPort
                 if (selectedGender == 1)
-                  const Column(
-                    children: [
+                  Column(
+                    children: const [
                       CustomNameInput(text: 'کشور محل تولد'),
                       SizedBox(height: 15),
                       // SizedBox(height: 15),
@@ -148,38 +149,21 @@ class _MySteperPageState extends State<MySteperPage> {
               ],
             ),
           ),
-          bottomNavigationBar: Container(
-            // padding: const EdgeInsets.symmetric(horizontal: 16.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                IconButton(
-                  icon: const Icon(Icons.arrow_back),
-                  color: currentStep > 4 ? Colors.grey : Colors.black,
+          bottomNavigationBar: Row(
+            children: [
+              SizedBox(
+                child: ElevatedButton(
+                  child: Text("abkabskdbaksd"),
                   onPressed: () {
                     setState(() {
                       isCancelButtonPressed = true;
                       isNextButtonPressed = false;
                       currentStep != 5 ? currentStep++ : currentStep = 5;
                     });
-                    // Handle cancel button press
                   },
                 ),
-                Text('$currentStep'),
-                IconButton(
-                  icon: const Icon(Icons.arrow_forward),
-                  color: currentStep < 3 ? Colors.grey : Colors.black,
-                  onPressed: () {
-                    setState(() {
-                      isNextButtonPressed = true;
-                      isCancelButtonPressed = false;
-                      currentStep != 2 ? currentStep-- : currentStep = 2;
-                    });
-                    // Handle next button press
-                  },
-                ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
       ),

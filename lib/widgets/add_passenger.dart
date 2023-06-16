@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 
 import 'custom_name_input.dart';
 
-
 class AddPassenger extends StatefulWidget {
+  const AddPassenger({super.key});
+
   @override
   _AddPassengerState createState() => _AddPassengerState();
 }
@@ -56,8 +57,8 @@ class _AddPassengerState extends State<AddPassenger> {
                 const SizedBox(height: 15),
                 // for National Card
                 if (selectedGender == 0)
-                  const Column(
-                    children: [
+                  Column(
+                    children: const [
                       CustomNameInput(text: 'کد ملی'),
                       SizedBox(height: 15),
                       CustomNameInput(text: 'نام'),
@@ -67,8 +68,8 @@ class _AddPassengerState extends State<AddPassenger> {
                   ),
                 //PassPort
                 if (selectedGender == 1)
-                  const Column(
-                    children: [
+                  Column(
+                    children: const [
                       CustomNameInput(text: 'کشور محل تولد'),
                       SizedBox(height: 15),
                       // SizedBox(height: 15),
@@ -80,9 +81,9 @@ class _AddPassengerState extends State<AddPassenger> {
           ),
           bottomNavigationBar: Container(
             padding: const EdgeInsets.symmetric(horizontal: 16.0),
-            child: const Row(
+            child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
+              children: const [
                 // ... bottom navigation bar icons
               ],
             ),
