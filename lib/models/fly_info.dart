@@ -6,6 +6,7 @@ class FlyInfo {
   String company;
   String flightNumber;
   String flightType;
+  String tag;
   int terminal;
 
   FlyInfo({
@@ -17,5 +18,6 @@ class FlyInfo {
     required this.flightNumber,
     required this.flightType,
     required this.terminal,
+    required this.tag,
   });
 }

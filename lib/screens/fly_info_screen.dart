@@ -78,7 +78,7 @@ class FlyInfoScreen extends StatelessWidget {
                       ),
                     ),
                   ],
-                )
+                ),
               ],
             ),
           ],
