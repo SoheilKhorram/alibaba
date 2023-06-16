@@ -8,6 +8,7 @@ class FlyInfo {
   String airplaneType;
   String tag;
   int terminal;
+  int price;
 
   FlyInfo({
     required this.departureTime,
@@ -19,5 +20,6 @@ class FlyInfo {
     required this.airplaneType,
     required this.terminal,
     required this.tag,
+    required this.price,
   });
 }
