@@ -1,3 +1,4 @@
+import 'package:alibaba/widgets/flight_info_grid_item.dart';
 import 'package:flutter/material.dart';
 
 import 'package:alibaba/widgets/fly_info_app_bar.dart';
@@ -13,7 +14,7 @@ class FlyInfoScreen extends StatelessWidget {
     return Scaffold(
       appBar: const FlyInfoAppBar(),
       body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 24),
+        padding: const EdgeInsets.symmetric(horizontal: 36, vertical: 24),
         child: Column(
           children: [
             Row(
@@ -80,6 +81,24 @@ class FlyInfoScreen extends StatelessWidget {
                   ],
                 ),
               ],
+            ),
+            const SizedBox(height: 32),
+            Directionality(
+              textDirection: TextDirection.rtl,
+              child: Expanded(
+                child: GridView(
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    childAspectRatio: 2,
+                    crossAxisCount: 3,
+                  ),
+                  children: const [
+                    FlightInfoGridItem(lebel: 'شماره پرواز', info: '23453'),
+                    FlightInfoGridItem(lebel: 'هواپیما', info: 'ERJ'),
+                    FlightInfoGridItem(lebel: 'ترمینال', info: '7'),
+                    FlightInfoGridItem(lebel: 'پرواز', info: 'اکونومی'),
+                  ],
+                ),
+              ),
             ),
           ],
         ),
