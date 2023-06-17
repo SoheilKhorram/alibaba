@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 
-import 'package:alibaba/widgets/fly_info_app_bar.dart';
+import 'package:alibaba/widgets/flight_info_app_bar.dart';
 import 'package:alibaba/widgets/airplane_logo.dart';
-import 'package:alibaba/widgets/fly_info_line.dart';
+import 'package:alibaba/widgets/flight_info_line.dart';
 import 'package:persian_number_utility/persian_number_utility.dart';
 import 'package:alibaba/widgets/submit_button.dart';
-import 'package:alibaba/models/fly_info.dart';
+import 'package:alibaba/models/flight_info.dart';
 import 'package:alibaba/widgets/flight_info_grid_item.dart';
 
-class FlyInfoScreen extends StatelessWidget {
-  const FlyInfoScreen({super.key});
+class FlightInfoScreen extends StatelessWidget {
+  const FlightInfoScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
