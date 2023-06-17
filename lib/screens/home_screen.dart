@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
 
-import 'package:alibaba/widgets/fly_button.dart';
+import 'package:alibaba/widgets/flight_button.dart';
 import 'package:alibaba/widgets/submit_button.dart';
 import 'package:alibaba/widgets/travel_city.dart';
 import 'package:alibaba/widgets/travel_date.dart';
 import 'package:alibaba/widgets/traveler_input.dart';
-
-import '../widgets/date_picker.dart';
-
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -121,9 +118,9 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
+                      children: const [
                         Expanded(child: TravelDate(text: "تاریخ برگشت")),
-                        const SizedBox(
+                        SizedBox(
                             width: 1,
                             height: 45,
                             child: DecoratedBox(

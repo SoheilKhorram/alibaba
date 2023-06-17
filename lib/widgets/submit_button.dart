@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 
 class SubmitButton extends StatelessWidget {
-  const SubmitButton(this.text, {super.key});
+  const SubmitButton(this.text, {super.key, this.color});
 
   final String text;
+  final Color? color;
 
   @override
   Widget build(BuildContext context) {
@@ -11,7 +12,7 @@ class SubmitButton extends StatelessWidget {
       width: double.infinity,
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
-          backgroundColor: const Color(0xFFFDB713),
+          backgroundColor: color ?? const Color(0xFFFDB713),
           shape: const RoundedRectangleBorder(
             borderRadius: BorderRadius.all(Radius.circular(8)),
           ),
@@ -20,8 +21,8 @@ class SubmitButton extends StatelessWidget {
         onPressed: () {},
         child: Text(
           text,
-          style: const TextStyle(
-            color: Colors.black,
+          style: TextStyle(
+            color: color == null ? Colors.black : Colors.white,
             fontFamily: 'Vazir',
             fontSize: 18,
           ),

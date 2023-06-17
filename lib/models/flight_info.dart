@@ -5,8 +5,10 @@ class FlyInfo {
   String destinationCity;
   String company;
   String flightNumber;
-  String flightType;
+  String airplaneType;
+  String tag;
   int terminal;
+  int totalPrice;
 
   FlyInfo({
     required this.departureTime,
@@ -15,7 +17,9 @@ class FlyInfo {
     required this.destinationCity,
     required this.company,
     required this.flightNumber,
-    required this.flightType,
+    required this.airplaneType,
     required this.terminal,
+    required this.tag,
+    required this.totalPrice,
   });
 }
