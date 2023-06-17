@@ -25,11 +25,12 @@ class CustomNameInput extends StatelessWidget {
             focusedBorder: const OutlineInputBorder(
               borderRadius: BorderRadius.all(Radius.circular(8)),
               borderSide: BorderSide(
-                color: Color(0xFFFDB713),
-                width: 2.5,
+                color: Color(0xff000000),
+                width: 1,
               ),
             ),
-            labelStyle: const TextStyle(fontFamily: 'Vazir', color: Colors.grey),
+            labelStyle:
+                const TextStyle(fontFamily: 'Vazir', color: Colors.grey),
             labelText: text,
           ),
         ),

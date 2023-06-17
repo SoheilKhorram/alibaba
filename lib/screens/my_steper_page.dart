@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import '../widgets/custom_name_input.dart';
 
 class MySteperPage extends StatefulWidget {
+  const MySteperPage({super.key});
+
   @override
   _MySteperPageState createState() => _MySteperPageState();
 }
@@ -21,13 +23,14 @@ class _MySteperPageState extends State<MySteperPage> {
       child: MaterialApp(
         home: Scaffold(
           appBar: AppBar(
-            backgroundColor: const Color(0xFFFDB713),
+            backgroundColor: Colors.white,
             actions: [
               currentStep < 5
                   ? const Text(
-                      'صدور بلیط < ',
+                      'صدور بلیط',
                       style: TextStyle(
                         color: Colors.black,
+                        fontFamily: 'Vazir',
                       ),
                     )
                   : IconButton(
@@ -39,11 +42,17 @@ class _MySteperPageState extends State<MySteperPage> {
                       color: currentStep > 4 ? Colors.green : Colors.black,
                       onPressed: () {},
                     ),
+              const Icon(
+                Icons.arrow_back_ios_new_rounded,
+                color: Color(0x38000000),
+                size: 18,
+              ),
               currentStep < 4
                   ? const Text(
-                      'پرداخت < ',
+                      'پرداخت',
                       style: TextStyle(
                         color: Colors.black,
+                        fontFamily: 'Vazir',
                       ),
                     )
                   : IconButton(
@@ -53,11 +62,17 @@ class _MySteperPageState extends State<MySteperPage> {
                       color: currentStep > 3 ? Colors.green : Colors.black,
                       onPressed: () {},
                     ),
+              const Icon(
+                Icons.arrow_back_ios_new_rounded,
+                color: Color(0x38000000),
+                size: 18,
+              ),
               currentStep < 3
                   ? const Text(
-                      'تایید اطلاعات < ',
+                      'تایید اطلاعات',
                       style: TextStyle(
                         color: Colors.black,
+                        fontFamily: 'Vazir',
                       ),
                     )
                   : IconButton(
@@ -65,11 +80,17 @@ class _MySteperPageState extends State<MySteperPage> {
                       color: currentStep > 2 ? Colors.green : Colors.black,
                       onPressed: () {},
                     ),
+              const Icon(
+                Icons.arrow_back_ios_new_rounded,
+                color: Color(0x38000000),
+                size: 18,
+              ),
               currentStep < 2
                   ? const Text(
-                      'مسافران < ',
+                      'مسافران',
                       style: TextStyle(
                         color: Colors.black,
+                        fontFamily: 'Vazir',
                       ),
                     )
                   : IconButton(
@@ -77,11 +98,17 @@ class _MySteperPageState extends State<MySteperPage> {
                       color: currentStep > 1 ? Colors.green : Colors.black,
                       onPressed: () {},
                     ),
+              const Icon(
+                Icons.arrow_back_ios_new_rounded,
+                color: Color(0x38000000),
+                size: 18,
+              ),
               currentStep < 1
                   ? const Text(
-                      'صدور بلیط < ',
+                      'صدور بلیط',
                       style: TextStyle(
                         color: Colors.black,
+                        fontFamily: 'Vazir',
                       ),
                     )
                   : IconButton(
