@@ -24,7 +24,7 @@ class Line extends StatelessWidget {
           ),
           Container(
             width: 1,
-            height: 100,
+            height: 85,
             color: const Color(0xffbec6cc),
           ),
           Container(

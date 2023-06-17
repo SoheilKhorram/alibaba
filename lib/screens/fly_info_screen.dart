@@ -34,7 +34,7 @@ class FlyInfoScreen extends StatelessWidget {
                         style: const TextStyle(
                           fontFamily: 'Vazir',
                           fontWeight: FontWeight.bold,
-                          fontSize: 20,
+                          fontSize: 15,
                         ),
                       ),
                       const SizedBox(height: 55),
@@ -43,7 +43,7 @@ class FlyInfoScreen extends StatelessWidget {
                         style: const TextStyle(
                           fontFamily: 'Vazir',
                           fontWeight: FontWeight.bold,
-                          fontSize: 20,
+                          fontSize: 15,
                         ),
                       ),
                     ],
@@ -58,7 +58,7 @@ class FlyInfoScreen extends StatelessWidget {
                         style: TextStyle(
                           fontFamily: 'Vazir',
                           fontWeight: FontWeight.bold,
-                          fontSize: 20,
+                          fontSize: 16,
                         ),
                       ),
                       Text(
@@ -73,7 +73,7 @@ class FlyInfoScreen extends StatelessWidget {
                         style: TextStyle(
                           fontFamily: 'Vazir',
                           fontWeight: FontWeight.bold,
-                          fontSize: 20,
+                          fontSize: 16,
                         ),
                       ),
                       Text(
