@@ -1,17 +1,31 @@
-import 'package:alibaba/widgets/flight_info_grid_item.dart';
-import 'package:alibaba/widgets/submit_button.dart';
 import 'package:flutter/material.dart';
 
 import 'package:alibaba/widgets/fly_info_app_bar.dart';
 import 'package:alibaba/widgets/airplane_logo.dart';
 import 'package:alibaba/widgets/fly_info_line.dart';
 import 'package:persian_number_utility/persian_number_utility.dart';
+import 'package:alibaba/widgets/submit_button.dart';
+import 'package:alibaba/models/fly_info.dart';
+import 'package:alibaba/widgets/flight_info_grid_item.dart';
 
 class FlyInfoScreen extends StatelessWidget {
   const FlyInfoScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    FlyInfo flightInfo = FlyInfo(
+      departureTime: '19:55',
+      arrivalTime: '21:40',
+      originCity: 'شیراز',
+      destinationCity: 'تهران',
+      company: 'ایران ایر',
+      flightNumber: '23453',
+      airplaneType: 'ERJ',
+      terminal: 7,
+      tag: 'اکونومی',
+      totalPrice: 1200000,
+    );
+
     return Scaffold(
       appBar: const FlyInfoAppBar(),
       body: Padding(
@@ -30,7 +44,7 @@ class FlyInfoScreen extends StatelessWidget {
                   Column(
                     children: [
                       Text(
-                        '19:55'.toPersianDigit(),
+                        flightInfo.departureTime.toPersianDigit(),
                         style: const TextStyle(
                           fontFamily: 'Vazir',
                           fontWeight: FontWeight.bold,
@@ -39,7 +53,7 @@ class FlyInfoScreen extends StatelessWidget {
                       ),
                       const SizedBox(height: 55),
                       Text(
-                        '19:55'.toPersianDigit(),
+                        flightInfo.arrivalTime.toPersianDigit(),
                         style: const TextStyle(
                           fontFamily: 'Vazir',
                           fontWeight: FontWeight.bold,
@@ -53,9 +67,9 @@ class FlyInfoScreen extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.end,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      const Text(
-                        'شیراز',
-                        style: TextStyle(
+                      Text(
+                        flightInfo.originCity,
+                        style: const TextStyle(
                           fontFamily: 'Vazir',
                           fontWeight: FontWeight.bold,
                           fontSize: 16,
@@ -68,9 +82,9 @@ class FlyInfoScreen extends StatelessWidget {
                         ),
                       ),
                       const SizedBox(height: 30),
-                      const Text(
-                        'تهران',
-                        style: TextStyle(
+                      Text(
+                        flightInfo.destinationCity,
+                        style: const TextStyle(
                           fontFamily: 'Vazir',
                           fontWeight: FontWeight.bold,
                           fontSize: 16,
@@ -97,11 +111,14 @@ class FlyInfoScreen extends StatelessWidget {
                     childAspectRatio: 2,
                     crossAxisCount: 3,
                   ),
-                  children: const [
-                    FlightInfoGridItem(lebel: 'شماره پرواز', info: '23453'),
-                    FlightInfoGridItem(lebel: 'هواپیما', info: 'ERJ'),
-                    FlightInfoGridItem(lebel: 'ترمینال', info: '7'),
-                    FlightInfoGridItem(lebel: 'پرواز', info: 'اکونومی'),
+                  children: [
+                    FlightInfoGridItem(
+                        lebel: 'شماره پرواز', info: flightInfo.flightNumber),
+                    FlightInfoGridItem(
+                        lebel: 'هواپیما', info: flightInfo.airplaneType),
+                    FlightInfoGridItem(
+                        lebel: 'ترمینال', info: flightInfo.terminal.toString()),
+                    FlightInfoGridItem(lebel: 'پرواز', info: flightInfo.tag),
                   ],
                 ),
               ),
@@ -123,7 +140,10 @@ class FlyInfoScreen extends StatelessWidget {
                       ),
                     ),
                     Text(
-                      '1200000'.toPersianDigit().seRagham(),
+                      flightInfo.totalPrice
+                          .toString()
+                          .toPersianDigit()
+                          .seRagham(),
                       style: const TextStyle(
                         fontFamily: 'Vazir',
                         fontWeight: FontWeight.w900,
