@@ -19,6 +19,8 @@ class CustomNameInput extends StatelessWidget {
           cursorHeight: 24,
           cursorWidth: 1,
           decoration: InputDecoration(
+            contentPadding:
+                const EdgeInsets.symmetric(horizontal: 10, vertical: 16),
             border: const OutlineInputBorder(
               borderRadius: BorderRadius.all(Radius.circular(8)),
             ),

@@ -7,6 +7,6 @@ import 'package:alibaba/screens/my_steper_page.dart';
 
 void main() {
   runApp(
-    MySteperPage(),
+    const MySteperPage(),
   );
 }
