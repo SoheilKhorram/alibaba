@@ -4,14 +4,14 @@ import 'package:alibaba/widgets/ticket.dart';
 import 'package:alibaba/models/ticketmod.dart';
 
 class TicketsList extends StatelessWidget {
-  TicketsList({
+  const TicketsList({
     Key? key,
     required this.numberOfAvailableTickets,
     required this.numberOfFullCapacityTickets,
   }) : super(key: key);
 
-  int numberOfAvailableTickets;
-  int numberOfFullCapacityTickets;
+  final int numberOfAvailableTickets;
+  final int numberOfFullCapacityTickets;
 
   @override
   Widget build(BuildContext context) {
@@ -22,6 +22,20 @@ class TicketsList extends StatelessWidget {
         departureTime: '12:00',
         arrivalTime: '21:40',
         numberOfRemainingSeats: 10,
+      ),
+      Ticketmod(
+        price: 1200000,
+        tags: const ['بیزینس', 'سیستمی', 'A14'],
+        departureTime: '09:30',
+        arrivalTime: '18:15',
+        numberOfRemainingSeats: 5,
+      ),
+      Ticketmod(
+        price: 800000,
+        tags: const ['اکونومی', 'چارتر', 'L22'],
+        departureTime: '15:45',
+        arrivalTime: '23:55',
+        numberOfRemainingSeats: 15,
       ),
     ];
 
@@ -36,6 +50,12 @@ class TicketsList extends StatelessWidget {
         tags: const ['اکونومی', 'سیستمی', 'M37'],
         departureTime: '23:30',
         arrivalTime: '34:00',
+        numberOfRemainingSeats: 0,
+      ),
+      Ticketmod(
+        tags: const ['بیزینس', 'سیستمی', 'A14'],
+        departureTime: '08:15',
+        arrivalTime: '11:40',
         numberOfRemainingSeats: 0,
       ),
     ];
