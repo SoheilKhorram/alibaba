@@ -1,3 +1,4 @@
+import 'package:alibaba/widgets/ticket_tag.dart';
 import 'package:flutter/material.dart';
 
 import '../widgets/custom_name_input.dart';
@@ -43,7 +44,7 @@ class _TravelerInfoCardState extends State<TravelerInfoCard> {
                   style: TextStyle(fontFamily: 'Vazir', fontSize: 16),
                 ),
                 subtitle: const Text(
-                  'کارت ملی/پاسپورت',
+                  'کارت ملی / پاسپورت',
                   style: TextStyle(fontFamily: 'Vazir', fontSize: 12),
                 ),
                 onTap: () {
@@ -54,6 +55,8 @@ class _TravelerInfoCardState extends State<TravelerInfoCard> {
                 trailing: Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [
+                    TicketTag('بزرگسال'),
+                    const SizedBox(width: 10),
                     Icon(isExpanded ? Icons.expand_less : Icons.expand_more),
                   ],
                 ),
