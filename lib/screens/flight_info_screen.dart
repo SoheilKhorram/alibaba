@@ -165,7 +165,7 @@ class FlightInfoScreen extends StatelessWidget {
                 const SizedBox(height: 8),
                 const SubmitButton(
                   'انتخاب بلیط و ادامه',
-                  color: Color(0xff0077db),
+                  backgroundColor: Color(0xff0077db),
                 ),
               ],
             ),
