@@ -12,7 +12,7 @@ class TravelerInfoCard extends StatefulWidget {
 
 class _TravelerInfoCardState extends State<TravelerInfoCard> {
   int selectedGender = 0; // 0 for "National Card", 1 for "PassPort"
-  bool isExpanded = false;
+  bool isExpanded = true;
   double bottomPadding = 20;
 
   @override
