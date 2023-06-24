@@ -33,6 +33,7 @@ class _TravelerInfoCardState extends State<TravelerInfoCard> {
     }
 
     return Card(
+      margin: EdgeInsets.only(bottom: 16),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(8),
       ),
