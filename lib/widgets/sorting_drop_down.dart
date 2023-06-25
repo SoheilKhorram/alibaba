@@ -8,12 +8,12 @@ const List<String> list = <String>[
 ];
 
 class SortingDropDown extends StatefulWidget {
-  const SortingDropDown({Key? key}) : super(key: key);
+  final void Function(String?) onChanged;
+
+  const SortingDropDown({Key? key, required this.onChanged}) : super(key: key);
 
   @override
-  State<SortingDropDown> createState() {
-    return _SortingDropDownState();
-  }
+  State<SortingDropDown> createState() => _SortingDropDownState();
 }
 
 class _SortingDropDownState extends State<SortingDropDown> {
@@ -56,8 +56,10 @@ class _SortingDropDownState extends State<SortingDropDown> {
           value: dropdownValue,
           onChanged: (String? value) {
             setState(() {
-              dropdownValue = value!;
+              dropdownValue = value;
             });
+            widget.onChanged(value);
+
           },
           hint: const Text(
             'مرتب سازی',
@@ -82,3 +84,4 @@ class _SortingDropDownState extends State<SortingDropDown> {
     );
   }
 }
+

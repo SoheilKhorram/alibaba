@@ -7,7 +7,7 @@ import 'package:alibaba/widgets/filter_button.dart';
 import 'package:alibaba/widgets/tickets_list.dart';
 
 class SearchResultScreen extends StatefulWidget {
-  const SearchResultScreen({super.key});
+  const SearchResultScreen({Key? key}) : super(key: key);
 
   @override
   State<SearchResultScreen> createState() {
@@ -29,17 +29,24 @@ class _SearchResultScreenState extends State<SearchResultScreen> {
             padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.end,
-              children: const [
-                SortingDropDown(),
-                SizedBox(width: 16),
-                FilterButton(),
+              children: [
+                SortingDropDown(
+                  onChanged: (String? value) {
+                    setState(() {
+                      dropdownValue = value;
+                    });
+                  },
+                ),
+                const SizedBox(width: 16),
+                const FilterButton(),
               ],
             ),
           ),
           TicketsList(
             numberOfAvailableTickets: 5,
             numberOfFullCapacityTickets: 3,
-          )
+            sortType: dropdownValue,
+          ),
         ],
       ),
     );
