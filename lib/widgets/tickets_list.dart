@@ -8,10 +8,12 @@ class TicketsList extends StatelessWidget {
     Key? key,
     required this.numberOfAvailableTickets,
     required this.numberOfFullCapacityTickets,
+    required this.sortType,
   }) : super(key: key);
 
   final int numberOfAvailableTickets;
   final int numberOfFullCapacityTickets;
+  final String? sortType;
 
   @override
   Widget build(BuildContext context) {
