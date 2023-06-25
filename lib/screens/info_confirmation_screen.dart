@@ -1,7 +1,9 @@
+import 'package:flutter/material.dart';
+
+import 'package:alibaba/widgets/submit_button.dart';
 import 'package:alibaba/widgets/stepper_app_bar.dart';
 import 'package:alibaba/widgets/ticket_info.dart';
 import 'package:alibaba/widgets/traveler_info.dart';
-import 'package:flutter/material.dart';
 
 class InfoConfirmationScreen extends StatelessWidget {
   const InfoConfirmationScreen({super.key});
@@ -17,6 +19,13 @@ class InfoConfirmationScreen extends StatelessWidget {
             TicketInfo(),
             TravelerInfo(),
           ],
+        ),
+      ),
+      bottomNavigationBar: const Padding(
+        padding: EdgeInsets.all(12),
+        child: SubmitButton(
+          'تایید و ادامه خرید',
+          backgroundColor: Color(0xFF0077db),
         ),
       ),
     );
