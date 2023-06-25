@@ -37,6 +37,14 @@ class TicketsList extends StatelessWidget {
         arrivalTime: '23:55',
         numberOfRemainingSeats: 15,
       ),
+
+      Ticketmod(
+        price: 2500000,
+        tags: const ['فرست کلاس', 'چارتر', 'MD8'],
+        departureTime: '17:00',
+        arrivalTime: '00:00',
+        numberOfRemainingSeats: 50,
+      ),
     ];
 
     List<Ticketmod> fullCapacityTickets = [
@@ -58,6 +66,7 @@ class TicketsList extends StatelessWidget {
         arrivalTime: '11:40',
         numberOfRemainingSeats: 0,
       ),
+
     ];
 
     return Expanded(
