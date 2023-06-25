@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:persian_number_utility/persian_number_utility.dart';
 
-class TicketInfoItem extends StatelessWidget {
-  const TicketInfoItem({super.key, required this.label, required this.value});
+class InfoItem extends StatelessWidget {
+  const InfoItem({super.key, required this.label, required this.value});
 
   final String label;
   final String value;
@@ -10,7 +10,7 @@ class TicketInfoItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(bottom: 16),
+      margin: const EdgeInsets.only(bottom: 16),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
