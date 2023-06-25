@@ -1,5 +1,5 @@
 import 'package:alibaba/models/flight_info.dart';
-import 'package:alibaba/widgets/ticket_info_item.dart';
+import 'package:alibaba/widgets/info_item.dart';
 import 'package:flutter/material.dart';
 
 class TicketInfo extends StatelessWidget {
@@ -21,6 +21,7 @@ class TicketInfo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      margin: const EdgeInsets.only(bottom: 16),
       padding: const EdgeInsets.only(top: 16),
       decoration: BoxDecoration(
         color: Colors.white,
@@ -75,13 +76,11 @@ class TicketInfo extends StatelessWidget {
             padding: const EdgeInsets.all(16.0),
             child: Column(
               children: [
-                TicketInfoItem(label: 'مبدا', value: flyInfo.originCity),
-                TicketInfoItem(label: 'مقصد', value: flyInfo.destinationCity),
-                TicketInfoItem(label: 'شرکت هواپیمایی', value: flyInfo.company),
-                TicketInfoItem(
-                    label: 'ساعت پرواز', value: flyInfo.departureTime),
-                TicketInfoItem(
-                    label: 'شماره پرواز', value: flyInfo.flightNumber),
+                InfoItem(label: 'مبدا', value: flyInfo.originCity),
+                InfoItem(label: 'مقصد', value: flyInfo.destinationCity),
+                InfoItem(label: 'شرکت هواپیمایی', value: flyInfo.company),
+                InfoItem(label: 'ساعت پرواز', value: flyInfo.departureTime),
+                InfoItem(label: 'شماره پرواز', value: flyInfo.flightNumber),
               ],
             ),
           )
