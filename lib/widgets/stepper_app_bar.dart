@@ -2,7 +2,9 @@ import 'package:alibaba/widgets/stepper_app_bar_item.dart';
 import 'package:flutter/material.dart';
 
 class StepperAppBar extends StatefulWidget implements PreferredSizeWidget {
-  const StepperAppBar({super.key});
+  const StepperAppBar({super.key, required this.step});
+
+  final int step;
 
   @override
   State<StepperAppBar> createState() {
@@ -14,10 +16,10 @@ class StepperAppBar extends StatefulWidget implements PreferredSizeWidget {
 }
 
 class _StepperAppBarState extends State<StepperAppBar> {
-  int currentStep = 2;
-
   @override
   Widget build(BuildContext context) {
+    int currentStep = widget.step;
+
     return AppBar(
       backgroundColor: Colors.white,
       actions: [
@@ -46,8 +48,8 @@ class _StepperAppBarState extends State<StepperAppBar> {
         StepperAppBarItem(
           step: 3,
           currentStep: currentStep,
-          text: ' تایید اطلاعات ',
-          icon: Icons.check_circle,
+          text: ' تایید اطلاعات',
+          icon: Icons.format_list_bulleted_rounded,
         ),
         const Icon(
           Icons.arrow_back_ios_new_rounded,
