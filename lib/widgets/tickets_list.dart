@@ -43,7 +43,7 @@ class TicketsList extends StatelessWidget {
         tags: const ['فرست کلاس', 'چارتر', 'MD8'],
         departureTime: '17:00',
         arrivalTime: '00:00',
-        numberOfRemainingSeats: 50,
+        numberOfRemainingSeats: 30,
       ),
     ];
 
@@ -56,8 +56,8 @@ class TicketsList extends StatelessWidget {
       ),
       Ticketmod(
         tags: const ['اکونومی', 'سیستمی', 'M37'],
-        departureTime: '23:30',
-        arrivalTime: '34:00',
+        departureTime: '14:00',
+        arrivalTime: '23:30',
         numberOfRemainingSeats: 0,
       ),
       Ticketmod(
