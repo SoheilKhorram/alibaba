@@ -70,6 +70,21 @@ class TicketsList extends StatelessWidget {
       ),
 
     ];
+    //this logic depends on input data and it can be changed in the future while using socket
+    switch (sortType) {
+      case 'زودترین':
+        availableTickets.sort((a, b) => a.departureTime.compareTo(b.departureTime));
+        break;
+      case 'دیرترین':
+        availableTickets.sort((a, b) => b.departureTime.compareTo(a.departureTime));
+        break;
+      case 'ارزانترین':
+        availableTickets.sort((a, b) => a.price!.compareTo(b.price as num));
+        break;
+      case 'گرانترین':
+        availableTickets.sort((a, b) => b.price!.compareTo(a.price as num));
+        break;
+    }
 
     return Expanded(
       child: ListView(
