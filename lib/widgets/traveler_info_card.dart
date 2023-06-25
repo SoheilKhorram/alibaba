@@ -1,9 +1,13 @@
+import 'package:alibaba/widgets/ticket_tag.dart';
 import 'package:flutter/material.dart';
 
 import '../widgets/custom_name_input.dart';
 
 class TravelerInfoCard extends StatefulWidget {
-  const TravelerInfoCard({Key? key}) : super(key: key);
+  const TravelerInfoCard({super.key, this.isDeletable = true, this.onDelete});
+
+  final bool isDeletable;
+  final VoidCallback? onDelete;
 
   @override
   _TravelerInfoCardState createState() => _TravelerInfoCardState();
@@ -11,8 +15,14 @@ class TravelerInfoCard extends StatefulWidget {
 
 class _TravelerInfoCardState extends State<TravelerInfoCard> {
   int selectedGender = 0; // 0 for "National Card", 1 for "PassPort"
-  bool isExpanded = false;
+  bool isExpanded = true;
   double bottomPadding = 20;
+
+  void deleteCard() {
+    setState(() {
+      widget.onDelete!();
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -23,6 +33,7 @@ class _TravelerInfoCardState extends State<TravelerInfoCard> {
     }
 
     return Card(
+      margin: EdgeInsets.only(bottom: 16),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(8),
       ),
@@ -43,7 +54,7 @@ class _TravelerInfoCardState extends State<TravelerInfoCard> {
                   style: TextStyle(fontFamily: 'Vazir', fontSize: 16),
                 ),
                 subtitle: const Text(
-                  'کارت ملی/پاسپورت',
+                  'کارت ملی / پاسپورت',
                   style: TextStyle(fontFamily: 'Vazir', fontSize: 12),
                 ),
                 onTap: () {
@@ -54,6 +65,8 @@ class _TravelerInfoCardState extends State<TravelerInfoCard> {
                 trailing: Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [
+                    TicketTag('بزرگسال'),
+                    const SizedBox(width: 10),
                     Icon(isExpanded ? Icons.expand_less : Icons.expand_more),
                   ],
                 ),
@@ -103,6 +116,40 @@ class _TravelerInfoCardState extends State<TravelerInfoCard> {
                             fontFamily: 'Vazir',
                           ),
                         ),
+                        const Spacer(),
+                        if (widget.isDeletable)
+                          Directionality(
+                            textDirection: TextDirection.rtl,
+                            child: ElevatedButton.icon(
+                              onPressed: () {
+                                print('clicked');
+                                deleteCard();
+                              },
+                              style: ButtonStyle(
+                                elevation: MaterialStateProperty.all<double>(0),
+                                backgroundColor:
+                                    MaterialStateProperty.all<Color>(
+                                        Colors.transparent),
+                                foregroundColor:
+                                    MaterialStateProperty.all<Color>(
+                                        const Color(0xFF0077db)),
+                                shape: MaterialStateProperty.all<
+                                    RoundedRectangleBorder>(
+                                  RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(8),
+                                    side: BorderSide.none,
+                                  ),
+                                ),
+                              ),
+                              icon: const Icon(Icons.delete_outline,
+                                  color: Colors.red),
+                              label: const Text(
+                                'حذف',
+                                style: TextStyle(
+                                    fontFamily: 'Vazir', color: Colors.red),
+                              ),
+                            ),
+                          ),
                       ],
                     ),
                     const SizedBox(height: 15),
