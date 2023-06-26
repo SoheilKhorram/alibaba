@@ -17,21 +17,21 @@ class _PriceDateListState extends State<PriceDateList> {
   int currentIndex = 0;
 
   List<String> dates = [
-    "ج - 28/04",
-    "ج - 29/04",
-    "ج - 30/04",
-    "ج - 30/04",
-    "ج - 30/04",
-    "ج - 30/04",
-    "ج - 30/04",
+    "چ - 25/11",
+    "چ - 25/11",
+    "چ - 25/11",
+    "چ - 25/11",
+    "چ - 25/11",
+    "چ - 25/11",
+    "چ - 25/11",
     // Add this section to be sure about navigate to next date-price
   ];
 
   List<int> prices = [
-    1238,
-    1500,
-    1320,
-    1310,
+    1000,
+    1200,
+    800,
+    2500,
     1340,
     1370,
     1350,
