@@ -20,7 +20,7 @@ class _MySteperPageState extends State<MySteperPage> {
       textDirection: TextDirection.rtl,
       child: MaterialApp(
         home: Scaffold(
-          appBar: const StepperAppBar(),
+          appBar: const StepperAppBar(step: 2),
           body: SingleChildScrollView(
             child: Padding(
               padding: const EdgeInsets.all(16.0),
