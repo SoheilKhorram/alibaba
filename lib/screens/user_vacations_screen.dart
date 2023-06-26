@@ -10,12 +10,15 @@ class UserVacationsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: const UserVacationsAppBar(),
-      body: Padding(
-        padding: const EdgeInsets.all(16),
-        child: Column(
-          children: const [
-            OrderSearch(),
-          ],
+      body: SingleChildScrollView(
+        scrollDirection: Axis.vertical,
+        child: Padding(
+          padding: const EdgeInsets.all(16),
+          child: Column(
+            children: const [
+              OrderSearch(),
+            ],
+          ),
         ),
       ),
     );
