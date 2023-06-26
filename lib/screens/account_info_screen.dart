@@ -38,8 +38,8 @@ class _AccountInfoScreenState extends State<AccountInfoScreen> {
                     GestureDetector(
                       onTap: () {},
                       child: const AccountInfoItem(
-                        label: 'لیست مسافران',
-                        icon: Icons.people_outline,
+                        label: 'سفرهای من',
+                        icon: Icons.luggage_outlined,
                       ),
                     ),
                     GestureDetector(
