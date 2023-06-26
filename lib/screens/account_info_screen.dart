@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import 'package:alibaba/widgets/account_info_app_bar.dart';
-import 'package:alibaba/widgets/travelers_list.dart';
 import 'package:alibaba/widgets/account_info_item.dart';
 
 class AccountInfoScreen extends StatefulWidget {
