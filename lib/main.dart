@@ -7,12 +7,13 @@ import 'package:alibaba/screens/my_steper_page.dart';
 import 'package:alibaba/screens/search_result_screen.dart';
 import 'package:alibaba/screens/flight_info_screen.dart';
 import 'package:alibaba/screens/info_confirmation_screen.dart';
+import 'package:alibaba/screens/account_info_screen.dart';
 
 void main() {
   runApp(
     const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: InfoConfirmationScreen(),
+      home: AccountInfoScreen(),
     ),
   );
 }
