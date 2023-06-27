@@ -35,7 +35,7 @@ class UserVacationCard extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.end,
         children: [
           Text(
-            '$date:تاریخ',
+            '$date    :تاریخ',
             style: const TextStyle(
               fontSize: 16,
               fontFamily: 'Vazir',
@@ -43,7 +43,7 @@ class UserVacationCard extends StatelessWidget {
           ),
           const SizedBox(height: 8),
           Text(
-            '$orderNumber:شماره سفارش',
+            '$orderNumber    :شماره سفارش',
             style: const TextStyle(
               fontSize: 16,
               fontFamily: 'Vazir',
@@ -51,7 +51,7 @@ class UserVacationCard extends StatelessWidget {
           ),
           const SizedBox(height: 8),
           Text(
-            '$orderType:نوع سفارش',
+            'نوع سفارش:    $orderType',
             style: const TextStyle(
               fontSize: 16,
               fontFamily: 'Vazir',
@@ -59,7 +59,7 @@ class UserVacationCard extends StatelessWidget {
           ),
           const SizedBox(height: 8),
           Text(
-            '$price:قیمت',
+            '$price    :قیمت',
             style: const TextStyle(
               fontSize: 16,
               fontFamily: 'Vazir',
