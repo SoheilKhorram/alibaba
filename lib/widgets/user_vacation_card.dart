@@ -1,7 +1,18 @@
 import 'package:flutter/material.dart';
 
-class UserVactionCard extends StatelessWidget {
-  const UserVactionCard({super.key});
+class UserVacationCard extends StatelessWidget {
+  const UserVacationCard({
+    super.key,
+    required this.price,
+    required this.orderNumber,
+    required this.orderType,
+    required this.date,
+  });
+
+  final String date;
+  final int price;
+  final int orderNumber;
+  final String orderType;
 
   @override
   Widget build(BuildContext context) {
@@ -22,34 +33,34 @@ class UserVactionCard extends StatelessWidget {
       alignment: Alignment.centerRight,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.end,
-        children: const [
+        children: [
           Text(
-            ':تاریخ',
-            style: TextStyle(
+            '$date:تاریخ',
+            style: const TextStyle(
               fontSize: 16,
               fontFamily: 'Vazir',
             ),
           ),
-          SizedBox(height: 8),
+          const SizedBox(height: 8),
           Text(
-            ':شماره سفارش',
-            style: TextStyle(
+            '$orderNumber:شماره سفارش',
+            style: const TextStyle(
               fontSize: 16,
               fontFamily: 'Vazir',
             ),
           ),
-          SizedBox(height: 8),
+          const SizedBox(height: 8),
           Text(
-            ':نوع سفارش',
-            style: TextStyle(
+            '$orderType:نوع سفارش',
+            style: const TextStyle(
               fontSize: 16,
               fontFamily: 'Vazir',
             ),
           ),
-          SizedBox(height: 8),
+          const SizedBox(height: 8),
           Text(
-            ':قیمت',
-            style: TextStyle(
+            '$price:قیمت',
+            style: const TextStyle(
               fontSize: 16,
               fontFamily: 'Vazir',
             ),
