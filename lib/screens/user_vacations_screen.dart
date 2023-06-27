@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:alibaba/widgets/user_vacations_app_bar.dart';
 import 'package:alibaba/widgets/order_search.dart';
+import 'package:alibaba/widgets/user_vacation_card.dart';
 
 class UserVacationsScreen extends StatelessWidget {
   const UserVacationsScreen({Key? key}) : super(key: key);
@@ -17,6 +18,7 @@ class UserVacationsScreen extends StatelessWidget {
           child: Column(
             children: const [
               OrderSearch(),
+              UserVactionCard(),
             ],
           ),
         ),
