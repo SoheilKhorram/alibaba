@@ -1,4 +1,5 @@
 import 'package:alibaba/widgets/custom_name_input.dart';
+import 'package:alibaba/widgets/date_picker.dart';
 import 'package:alibaba/widgets/submit_button.dart';
 import 'package:flutter/material.dart';
 import 'package:persian_datetime_picker/persian_datetime_picker.dart';
@@ -115,16 +116,15 @@ class _OrderSearchState extends State<OrderSearch> {
           const SizedBox(height: 16),
           const Text('شماره سفارش', style: TextStyle(fontFamily: 'Vazir')),
           const SizedBox(height: 8),
-          const CustomNameInput(text: 'شماره سفارش'),
+          const CustomNameInput(text: ''),
           const SizedBox(height: 16),
           const Text('تاریخ', style: TextStyle(fontFamily: 'Vazir')),
           const SizedBox(height: 8),
-          Row(
-            children: const [
-              Flexible(child: CustomNameInput(text: 'تا')),
-              SizedBox(width: 15),
-              Flexible(child: CustomNameInput(text: 'از')),
-            ],
+          datePicker(
+            fromDate: fromDate,
+            toDate: toDate,
+            selectFromDate: () => selectFromDate(context, fromDate),
+            selectToDate: () => selectToDate(context, toDate), onDatesSelected: (Jalali) {  },
           ),
           const SizedBox(height: 16),
           const SubmitButton('جستجو')
