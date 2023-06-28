@@ -26,7 +26,7 @@ class _datePickerState extends State<datePicker> {
     if (picked != null) {
       setState(() {
         raftDate = picked;
-        if (bargashtDate != null && bargashtDate!.isBefore(raftDate!)) {
+        if (bargashtDate != null && bargashtDate!.isBefore(raftDate!.addDays(1))) {
           bargashtDate = null;
         }
       });
