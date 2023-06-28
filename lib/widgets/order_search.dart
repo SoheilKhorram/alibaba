@@ -115,7 +115,7 @@ class _OrderSearchState extends State<OrderSearch> {
           const SizedBox(height: 16),
           const Text('شماره سفارش', style: TextStyle(fontFamily: 'Vazir')),
           const SizedBox(height: 8),
-          const CustomNameInput(text: ''),
+          const CustomNameInput(text: 'شماره سفارش'),
           const SizedBox(height: 16),
           const Text('تاریخ', style: TextStyle(fontFamily: 'Vazir')),
           const SizedBox(height: 8),

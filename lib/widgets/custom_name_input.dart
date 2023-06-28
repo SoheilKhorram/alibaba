@@ -1,10 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:persian_datetime_picker/persian_datetime_picker.dart';
 
 class CustomNameInput extends StatelessWidget {
-  const CustomNameInput({required this.text, Key? key}) : super(key: key);
+  const CustomNameInput({
+    required this.text,
+    Key? key,
+    this.onTap,
+    this.selectedDate,
+    this.enabled,
+  }) : super(key: key);
 
   final String text;
-
+  final void Function()? onTap;
+  final Jalali? selectedDate;
+  final bool? enabled;
   @override
   Widget build(BuildContext context) {
     return SizedBox(
