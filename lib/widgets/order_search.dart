@@ -1,6 +1,7 @@
 import 'package:alibaba/widgets/custom_name_input.dart';
 import 'package:alibaba/widgets/submit_button.dart';
 import 'package:flutter/material.dart';
+import 'package:persian_datetime_picker/persian_datetime_picker.dart';
 
 class OrderSearch extends StatefulWidget {
   const OrderSearch({Key? key}) : super(key: key);
@@ -10,6 +11,37 @@ class OrderSearch extends StatefulWidget {
 }
 
 class _OrderSearchState extends State<OrderSearch> {
+  Jalali? fromDate;
+  Jalali? toDate;
+
+  void selectFromDate(BuildContext context, Jalali? initialDate) async {
+    final Jalali? picked = await showPersianDatePicker(
+      context: context,
+      initialDate: initialDate ?? Jalali.now(),
+      firstDate: Jalali(1300),
+      lastDate: Jalali(1500),
+    );
+    if (picked != null) {
+      setState(() {
+        fromDate = picked;
+      });
+    }
+  }
+
+  void selectToDate(BuildContext context, Jalali? initialDate) async {
+    final Jalali? picked = await showPersianDatePicker(
+      context: context,
+      initialDate: initialDate ?? Jalali.now(),
+      firstDate: Jalali(1390),
+      lastDate: Jalali(1450),
+    );
+    if (picked != null) {
+      setState(() {
+        toDate = picked;
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
