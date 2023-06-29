@@ -23,6 +23,14 @@ class _NameInputState extends State<NameInput> {
     });
   }
 
+  TextStyle _getErrorTextStyle() {
+    return const TextStyle(
+      fontFamily: 'Vazir',
+      fontSize: 12,
+      color: Colors.red,
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -30,43 +38,39 @@ class _NameInputState extends State<NameInput> {
         padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
         child: Directionality(
           textDirection: TextDirection.rtl,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              TextField(
-                controller: _nameController,
-                onChanged: validateInput,
-                onEditingComplete: () {
-                  validateInput(_nameController.text);
-                },
-                style: const TextStyle(
-                  fontFamily: 'Vazir',
-                  fontSize: 16,
-                ),
-                cursorColor: Colors.black,
-                cursorHeight: 24,
-                cursorWidth: 1,
-                decoration: const InputDecoration(
-                  prefixIcon: Icon(
-                    Icons.person_outline,
-                    color: Colors.grey,
-                  ),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(8)),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(8)),
-                    borderSide: BorderSide(
-                      color: Color(0xFFFDB713),
-                      width: 2.5,
-                    ),
-                  ),
-                  labelStyle: TextStyle(fontFamily: 'Vazir', color: Colors.grey),
-                  labelText: 'نام کاربری',
+          child: TextField(
+            controller: _nameController,
+            onChanged: validateInput,
+            onEditingComplete: () {
+              validateInput(_nameController.text);
+            },
+            style: const TextStyle(
+              fontFamily: 'Vazir',
+              fontSize: 16,
+            ),
+            cursorColor: Colors.black,
+            cursorHeight: 24,
+            cursorWidth: 1,
+            decoration: InputDecoration(
+              prefixIcon: const Icon(
+                Icons.person_outline,
+                color: Colors.grey,
+              ),
+              border: const OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(8)),
+              ),
+              focusedBorder: const OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(8)),
+                borderSide: BorderSide(
+                  color: Color(0xFFFDB713),
+                  width: 2.5,
                 ),
               ),
-              if (_showError) ErrorWidget('نام نمی‌تواند خالی باشد'),
-            ],
+              labelStyle: const TextStyle(fontFamily: 'Vazir', color: Colors.grey),
+              labelText: 'نام کاربری',
+              errorText: _showError ? 'نام نمی‌تواند خالی باشد' : null,
+              errorStyle: _getErrorTextStyle(),
+            ),
           ),
         ),
       ),
