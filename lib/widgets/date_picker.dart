@@ -5,7 +5,13 @@ import 'package:persian_datetime_picker/persian_datetime_picker.dart';
 class datePicker extends StatefulWidget {
   final Function(Jalali) onDatesSelected;
 
-  const datePicker({Key? key,  required this.onDatesSelected, Jalali? fromDate, Jalali? toDate,  void Function()? selectFromDate,  void Function()? selectToDate})
+  const datePicker(
+      {Key? key,
+      required this.onDatesSelected,
+      Jalali? fromDate,
+      Jalali? toDate,
+      void Function()? selectFromDate,
+      void Function()? selectToDate})
       : super(key: key);
 
   @override
@@ -63,15 +69,17 @@ class _datePickerState extends State<datePicker> {
               child: CustomNameInput(
                 selectedDate: toDate,
                 onTap: () => selectToDate(context),
-                enabled: true, text: 'تا',
+                enabled: true,
+                text: 'تا',
               ),
             ),
+            const SizedBox(width: 16),
             Flexible(
               child: CustomNameInput(
                 selectedDate: fromDate,
                 onTap: () => selectFromDate(context),
-                enabled: true, text: 'از',
-
+                enabled: true,
+                text: 'از',
               ),
             ),
           ],
