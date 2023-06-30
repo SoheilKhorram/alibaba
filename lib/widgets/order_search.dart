@@ -138,8 +138,11 @@ class _OrderSearchState extends State<OrderSearch> {
             selectToDate: () => selectToDate(context, toDate), onDatesSelected: (Jalali) {  },
           ),
           const SizedBox(height: 16),
-          const SubmitButton('جستجو')
-        ],
+          SubmitButton('جستجو', onPressed: () {
+            final fromDateString = fromDate;
+            final toDateString = toDate;
+            widget.onFilter(fromDateString, toDateString, orderNumber);
+          }),          ],
       ),
     );
   }
