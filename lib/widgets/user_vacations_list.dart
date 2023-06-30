@@ -2,10 +2,21 @@ import 'package:flutter/material.dart';
 
 import 'package:alibaba/widgets/user_vacation_card.dart';
 import 'package:alibaba/models/user_vacation_model.dart';
+import 'package:persian_datetime_picker/persian_datetime_picker.dart';
 
 // ignore: must_be_immutable
 class UserVacationsList extends StatelessWidget {
-  UserVacationsList({super.key});
+  final Jalali? selectedFromDate;
+  final Jalali? selectedToDate;
+  final int? selectedOrderNumber;
+
+
+  UserVacationsList({
+    this.selectedFromDate,
+    this.selectedToDate,
+    this.selectedOrderNumber,
+    super.key
+  });
 
   //make a list of vacations
   List<UserVacationModel> vacations = [
@@ -47,19 +58,47 @@ class UserVacationsList extends StatelessWidget {
     ),
   ];
 
+
   @override
   Widget build(BuildContext context) {
+    List<UserVacationModel> filteredVacations = vacations.where((vacation) {
+      if (selectedFromDate != null && vacation.date != selectedFromDate.toString()) {
+        return false;
+      }
+      if (selectedToDate != null && vacation.date != selectedToDate.toString()) {
+        return false;
+      }
+      if (selectedOrderNumber != null && vacation.orderNumber != selectedOrderNumber) {
+        return false;
+      }
+      return true;
+    }).toList();
+
     return ListView.builder(
-      itemCount: vacations.length,
+      itemCount: filteredVacations.length,
       shrinkWrap: true,
       scrollDirection: Axis.vertical,
       physics: const BouncingScrollPhysics(),
       itemBuilder: (context, index) {
+        final vacation = filteredVacations[index];
+
+        if (selectedFromDate != null && vacation.date != selectedFromDate.toString()) {
+          return const SizedBox.shrink();
+        }
+
+        if (selectedToDate != null && vacation.date != selectedToDate.toString()) {
+          return const SizedBox.shrink();
+        }
+
+        if (selectedOrderNumber != null && vacation.orderNumber != selectedOrderNumber) {
+          return const SizedBox.shrink();
+        }
+
         return UserVacationCard(
-          date: vacations[index].date,
-          price: vacations[index].price,
-          orderNumber: vacations[index].orderNumber,
-          orderType: vacations[index].orderType,
+          date: vacation.date,
+          price: vacation.price,
+          orderNumber: vacation.orderNumber,
+          orderType: vacation.orderType,
         );
       },
     );
