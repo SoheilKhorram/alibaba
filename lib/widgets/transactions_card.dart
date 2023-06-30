@@ -1,7 +1,16 @@
 import 'package:flutter/material.dart';
 
 class TransactionsCard extends StatelessWidget {
-  const TransactionsCard({super.key});
+  const TransactionsCard({
+    super.key,
+    required this.date,
+    required this.price,
+    required this.digitalReceipt,
+  });
+
+  final String date;
+  final int price;
+  final String digitalReceipt;
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +41,7 @@ class TransactionsCard extends StatelessWidget {
           ),
           const SizedBox(height: 8),
           Text(
-            '$orderNumber    :شماره سفارش',
+            '$price    :مبلغ',
             style: const TextStyle(
               fontSize: 16,
               fontFamily: 'Vazir',
@@ -40,15 +49,7 @@ class TransactionsCard extends StatelessWidget {
           ),
           const SizedBox(height: 8),
           Text(
-            'نوع سفارش:    $orderType',
-            style: const TextStyle(
-              fontSize: 16,
-              fontFamily: 'Vazir',
-            ),
-          ),
-          const SizedBox(height: 8),
-          Text(
-            '$price    :قیمت',
+            '$digitalReceipt    :رسید دیجیتالی',
             style: const TextStyle(
               fontSize: 16,
               fontFamily: 'Vazir',

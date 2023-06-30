@@ -10,10 +10,28 @@ class TransactionsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: const TransactionsScreenAppBar(),
-      body: Column(
-        children: const [
-          TransactionsCard(),
-        ],
+      body: SingleChildScrollView(
+        scrollDirection: Axis.vertical,
+        physics: const BouncingScrollPhysics(),
+        child: Column(
+          children: [
+            const SizedBox(height: 16),
+            ListView.builder(
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              shrinkWrap: true,
+              itemCount: 10,
+              scrollDirection: Axis.vertical,
+              physics: const ClampingScrollPhysics(),
+              itemBuilder: (context, index) {
+                return const TransactionsCard(
+                  date: '1400/01/01',
+                  price: 1000000,
+                  digitalReceipt: 'https://www.google.com/',
+                );
+              },
+            )
+          ],
+        ),
       ),
     );
   }
