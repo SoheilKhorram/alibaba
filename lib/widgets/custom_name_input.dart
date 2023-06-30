@@ -9,12 +9,17 @@ class CustomNameInput extends StatelessWidget {
     this.onTap,
     this.selectedDate,
     this.enabled,
+    this.controller,
+    this.onChanged,
   }) : super(key: key);
 
   final String text;
   final void Function()? onTap;
   final Jalali? selectedDate;
   final bool? enabled;
+  final TextEditingController? controller;
+  final void Function(String)? onChanged;
+
   @override
   Widget build(BuildContext context) {
     String formattedDate = selectedDate != null
@@ -49,9 +54,10 @@ class CustomNameInput extends StatelessWidget {
             const TextStyle(fontFamily: 'Vazir', color: Colors.grey),
             labelText: text,
           ),
-          controller: TextEditingController(
+          controller: controller ?? TextEditingController(
             text: selectedDate != null ? formattedDate : '',
           ),
+          onChanged: onChanged,
         ),
       ),
     );
