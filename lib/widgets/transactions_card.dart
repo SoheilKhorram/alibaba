@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:persian_number_utility/persian_number_utility.dart';
 
 class TransactionsCard extends StatelessWidget {
   const TransactionsCard({
@@ -33,7 +34,7 @@ class TransactionsCard extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.end,
         children: [
           Text(
-            '$date    :تاریخ',
+            '$date    :تاریخ'.toPersianDigit(),
             style: const TextStyle(
               fontSize: 16,
               fontFamily: 'Vazir',
@@ -41,7 +42,7 @@ class TransactionsCard extends StatelessWidget {
           ),
           const SizedBox(height: 8),
           Text(
-            '$price    :مبلغ',
+            '$price    :مبلغ'.toPersianDigit(),
             style: const TextStyle(
               fontSize: 16,
               fontFamily: 'Vazir',
@@ -49,7 +50,7 @@ class TransactionsCard extends StatelessWidget {
           ),
           const SizedBox(height: 8),
           Text(
-            '$digitalReceipt    :رسید دیجیتالی',
+            '$digitalReceipt    :رسید دیجیتالی'.toPersianDigit(),
             style: const TextStyle(
               fontSize: 16,
               fontFamily: 'Vazir',
