@@ -12,7 +12,7 @@ import 'package:alibaba/screens/transactions_screen.dart';
 
 void main() {
   runApp(
-    const MaterialApp(
+    MaterialApp(
       debugShowCheckedModeBanner: false,
       home: TransactionsScreen(),
     ),
