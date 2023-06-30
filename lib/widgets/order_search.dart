@@ -5,7 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:persian_datetime_picker/persian_datetime_picker.dart';
 
 class OrderSearch extends StatefulWidget {
-  const OrderSearch({Key? key}) : super(key: key);
+  final Function(Jalali?, Jalali?, int?) onFilter;
+  const OrderSearch({Key? key, required this.onFilter}) : super(key: key);
 
   @override
   _OrderSearchState createState() => _OrderSearchState();
@@ -14,6 +15,8 @@ class OrderSearch extends StatefulWidget {
 class _OrderSearchState extends State<OrderSearch> {
   Jalali? fromDate;
   Jalali? toDate;
+  int? orderNumber;
+  TextEditingController orderNumberController = TextEditingController();
 
   void selectFromDate(BuildContext context, Jalali? initialDate) async {
     final Jalali? picked = await showPersianDatePicker(
@@ -116,7 +119,15 @@ class _OrderSearchState extends State<OrderSearch> {
           const SizedBox(height: 16),
           const Text('شماره سفارش', style: TextStyle(fontFamily: 'Vazir')),
           const SizedBox(height: 8),
-          const CustomNameInput(text: ''),
+          CustomNameInput(
+            text: '',
+            controller: orderNumberController,
+            onChanged: (value) {
+              setState(() {
+                orderNumber = value.isNotEmpty ? int.tryParse(value) : null;
+              });
+            },
+          ),
           const SizedBox(height: 16),
           const Text('تاریخ', style: TextStyle(fontFamily: 'Vazir')),
           const SizedBox(height: 8),
