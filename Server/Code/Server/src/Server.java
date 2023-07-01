@@ -4,8 +4,8 @@ import java.io.*;
 
 class Server {
     public static void main(String[] args) throws IOException {
-        System.out.println("Hello");
-        ServerSocket serverSocket = new ServerSocket(8080);
+        System.out.println("Hello main");
+        ServerSocket serverSocket = new ServerSocket(4321);
         Vector<User> users = DataBase.UsersFinder();
         while (true) {
             System.out.println("Waiting for client...");
@@ -55,11 +55,11 @@ class ClientHandler extends Thread {
     // send the response to server
     public void writer(String write) throws IOException {
         dos.writeBytes(write);
-        dos.flush();
-        dos.close();
-        dis.close();
-        socket.close();
-        System.out.println(write);
+//        dos.flush();
+//        dos.close();
+//        dis.close();
+//        socket.close();
+        System.out.println("this write : " + write);
     }
 
     @Override
@@ -102,7 +102,7 @@ class ClientHandler extends Thread {
                 }
                 break;
             }
-            case "signup": {
+            case "SignUp": {
                 // checks the userName if it's taken, the response is zero and user is not added
                 // signup/userName/password
                 boolean duplicate = false;
@@ -111,6 +111,7 @@ class ClientHandler extends Thread {
                     if (user.userName.equals(userName)) {
                         try {
                             writer("0");
+                            System.out.println("duplicate");
                             duplicate = true;
                             break;
                         } catch (IOException e) {
@@ -123,6 +124,7 @@ class ClientHandler extends Thread {
                     users.add(user);
                     try {
                         DataBase.AddUser(user);
+                        System.out.println(user.userName + "->" + user.password + "->add");
                         writer("1");
                     } catch (IOException e) {
                         throw new RuntimeException(e);
@@ -130,6 +132,9 @@ class ClientHandler extends Thread {
                 }
                 break;
             }
+            default:
+                System.out.println("default");
+                break;
         }
     }
 }
