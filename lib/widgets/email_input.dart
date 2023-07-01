@@ -18,6 +18,9 @@ class _EmailInputState extends State<EmailInput> {
   }
 
   bool _validateEmail(String value) {
+    if (value.isEmpty) {
+      return false;
+    }
     const emailRegex = r'^\w+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-]{2,}$';
     return RegExp(emailRegex).hasMatch(value);
   }
