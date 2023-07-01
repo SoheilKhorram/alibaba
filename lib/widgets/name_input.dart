@@ -1,15 +1,18 @@
 import 'package:flutter/material.dart';
 
 class NameInput extends StatelessWidget {
-  const NameInput({super.key});
+  const NameInput({super.key, this.controller});
+
+  final TextEditingController? controller;
 
   @override
   Widget build(BuildContext context) {
-    return const SizedBox(
+    return SizedBox(
       child: Directionality(
         textDirection: TextDirection.rtl,
         child: TextField(
-          style: TextStyle(
+          controller: controller,
+          style: const TextStyle(
             fontFamily: 'Vazir',
             fontSize: 16,
           ),
