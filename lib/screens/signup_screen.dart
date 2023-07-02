@@ -117,7 +117,7 @@ class _SignupScreenState extends State<SignupScreen> {
                             builder: (context) => const HomeScreen(),
                           ),
                         );
-                      } else {
+                      } else if (result == '0') {
                         // ToDo : show error message that user name is duplicate
                         message = 'نام کاربری تکراری است';
                       }
