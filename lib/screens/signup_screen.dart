@@ -10,7 +10,7 @@ import '../widgets/User.dart';
 import '../widgets/date_picker.dart';
 import 'login_screen.dart';
 
-String response = "", message = "";
+String response = '', message = '', result = '';
 
 class SignupScreen extends StatefulWidget {
   const SignupScreen({Key? key}) : super(key: key);
@@ -33,9 +33,10 @@ class _SignupScreenState extends State<SignupScreen> {
     super.dispose();
   }
 
-  Future<String> SignupScreen(String userName, String password) async {
+  Future<String> SignupScreen(
+      String userName, String password, String mail) async {
     await Socket.connect("10.0.2.2", 4321).then((serverSocket) {
-      serverSocket.write('SignUp/$userName/$password\u0000');
+      serverSocket.write('SignUp/$userName/$password/$mail\u0000');
       serverSocket.flush();
       serverSocket.listen((socket) {
         setState(() {
@@ -102,11 +103,11 @@ class _SignupScreenState extends State<SignupScreen> {
                       String name = _nameController.text;
                       String password = _passwordController.text;
                       String email = _emailController.text;
-                      String result = await SignupScreen(
+                      result = await SignupScreen(
                         name,
                         password,
+                        email,
                       );
-                      print('this is result: $result');
                       if (result == '1') {
                         message = 'اکانت شما با موفقیت ساخته شد';
                         User.name = name;
@@ -116,7 +117,7 @@ class _SignupScreenState extends State<SignupScreen> {
                             builder: (context) => const HomeScreen(),
                           ),
                         );
-                      } else {
+                      } else if (result == '0') {
                         // ToDo : show error message that user name is duplicate
                         message = 'نام کاربری تکراری است';
                       }
