@@ -14,29 +14,31 @@ class DataBase {
 
     static public DataBase getDb() {
         if (db == null)
-            db = new DataBase("D:\\Source\\AliBaba\\alibaba\\Server\\DataBase\\Table\\UserTable.txt");
+            db = new DataBase("E:\\alibaba\\Server\\DataBase\\Table\\UserTable.txt");
         return db;
     }
 
     /// Find users from file
     static public Vector<User> UsersFinder() throws IOException {
         Vector<User> users = new Vector<>();
-        BufferedReader reader = new BufferedReader(new FileReader("D:\\Source\\AliBaba\\alibaba\\Server\\DataBase\\Table\\UserTable.txt"));
+        BufferedReader reader = new BufferedReader(
+                new FileReader("E:\\alibaba\\Server\\DataBase\\Table\\UserTable.txt"));
         String line = reader.readLine();
         while (line != null) {
             String[] elements = line.split("/");
             users.add(new User(elements[0], elements[1]));
             line = reader.readLine();
         }
-//        reader.close();
+        reader.close();
         return users;
     }
 
     // save new user to file
     static public void AddUser(User user) throws IOException {
-        BufferedWriter writer = new BufferedWriter(new FileWriter("D:\\Source\\AliBaba\\alibaba\\Server\\DataBase\\Table\\UserTable.txt", true));
+        BufferedWriter writer = new BufferedWriter(
+                new FileWriter("E:\\alibaba\\Server\\DataBase\\Table\\UserTable.txt", true));
         writer.append(user.userName).append("/").append(user.password).append("\n");
-        writer.flush();
+        writer.close();
     }
 
     void addDataBase(String str, Controller c) {
@@ -63,7 +65,6 @@ class Controller {
 
     String readFile() throws IOException {
         //
-
 
         return null;
     }

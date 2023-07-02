@@ -106,7 +106,6 @@ class _SignupScreenState extends State<SignupScreen> {
                         name,
                         password,
                       );
-                      print('this is result: $result');
                       if (result == '1') {
                         message = 'اکانت شما با موفقیت ساخته شد';
                         User.name = name;
