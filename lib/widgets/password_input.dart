@@ -216,6 +216,19 @@ class _PasswordInputState extends State<PasswordInput> {
           ],
         ),
       ),
+                const SizedBox(width: 4),
+                Text(
+                  getPasswordStrengthText(_passwordStrength),
+                  style: TextStyle(
+                    fontFamily: 'Vazir',
+                    color: getPasswordStrengthColor(_passwordStrength),
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
