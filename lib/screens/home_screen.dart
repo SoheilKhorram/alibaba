@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:persian_datetime_picker/persian_datetime_picker.dart';
 
 import '../widgets/date_picker.dart';
-import '../widgets/fly_button.dart';
+import '../widgets/flight_button.dart';
 import '../widgets/submit_button.dart';
 import '../widgets/travel_city.dart';
 import '../widgets/traveler_input.dart';

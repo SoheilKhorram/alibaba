@@ -1,7 +1,7 @@
-import 'package:alibaba/widgets/ticket_tag.dart';
 import 'package:flutter/material.dart';
 
 import '../widgets/custom_name_input.dart';
+import 'package:alibaba/widgets/ticket_tag.dart';
 
 class TravelerInfoCard extends StatefulWidget {
   const TravelerInfoCard({super.key, this.isDeletable = true, this.onDelete});
@@ -65,7 +65,7 @@ class _TravelerInfoCardState extends State<TravelerInfoCard> {
                 trailing: Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    TicketTag('بزرگسال'),
+                    Tag('بزرگسال'),
                     const SizedBox(width: 10),
                     Icon(isExpanded ? Icons.expand_less : Icons.expand_more),
                   ],
