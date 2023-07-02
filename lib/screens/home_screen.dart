@@ -8,7 +8,7 @@ import '../widgets/travel_city.dart';
 import '../widgets/traveler_input.dart';
 
 class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
+  const HomeScreen({Key? key}) : super(key: key);
 
   @override
   State<HomeScreen> createState() {

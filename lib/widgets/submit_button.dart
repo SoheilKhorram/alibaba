@@ -1,10 +1,16 @@
 import 'package:flutter/material.dart';
 
 class SubmitButton extends StatelessWidget {
-  const SubmitButton(this.text, {super.key, this.backgroundColor});
+  const SubmitButton(
+      this.text, {
+        Key? key,
+        this.backgroundColor,
+        this.onPressed,
+      }) : super(key: key);
 
   final String text;
   final Color? backgroundColor;
+  final void Function()? onPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -16,9 +22,9 @@ class SubmitButton extends StatelessWidget {
           shape: const RoundedRectangleBorder(
             borderRadius: BorderRadius.all(Radius.circular(8)),
           ),
-          padding: const EdgeInsets.symmetric(vertical: 16),
+          padding: const EdgeInsets.symmetric(vertical: 14),
         ),
-        onPressed: () {},
+        onPressed: onPressed,
         child: Text(
           text,
           style: TextStyle(
