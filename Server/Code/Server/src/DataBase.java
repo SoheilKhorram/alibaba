@@ -23,19 +23,26 @@ class DataBase {
         Vector<User> users = new Vector<>();
         BufferedReader reader = new BufferedReader(new FileReader("D:\\Source\\AliBaba\\alibaba\\Server\\DataBase\\Table\\UserTable.txt"));
         String line = reader.readLine();
+        System.out.print("username: ");
         while (line != null) {
             String[] elements = line.split("/");
-            users.add(new User(elements[0], elements[1]));
+            users.add(new User(elements[1], elements[2], elements[3]));
             line = reader.readLine();
         }
 //        reader.close();
+        for (var item : users) {
+            System.out.print(item.userName + "/");
+        }
+        System.out.print("\n");
         return users;
     }
 
     // save new user to file
     static public void AddUser(User user) throws IOException {
+        int id = getDb().getCount() + 1;
+        System.out.println("id: " + id);
         BufferedWriter writer = new BufferedWriter(new FileWriter("D:\\Source\\AliBaba\\alibaba\\Server\\DataBase\\Table\\UserTable.txt", true));
-        writer.append(user.userName).append("/").append(user.password).append("\n");
+        writer.append((String.valueOf(id)) + "/").append(user.userName).append("/").append(user.password).append("/").append(user.mail).append("\n");
         writer.flush();
     }
 
@@ -45,6 +52,22 @@ class DataBase {
 
     Controller getController(String str) {
         return dataBase.get(str);
+    }
+
+    int getCount() throws IOException {
+
+        int count = 0;
+
+        BufferedReader reader = new BufferedReader(new FileReader("D:\\Source\\AliBaba\\alibaba\\Server\\DataBase\\Table\\UserTable.txt"));
+
+        String line = reader.readLine();
+
+        while (line != null) {
+            count++;
+            line = reader.readLine();
+        }
+
+        return count;
     }
 }
 
@@ -84,17 +107,5 @@ class Controller {
                 return str;
 
         return "invalid";
-    }
-
-    int getCount() throws IOException {
-        int count = 0;
-
-        String[] split = this.readFile().split("\n");
-
-        for (String str : split)
-
-            count++;
-
-        return count;
     }
 }
