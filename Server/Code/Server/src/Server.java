@@ -15,11 +15,12 @@ class Server {
 }
 
 class User {
-    String userName, password;
+    String userName, password, mail;
 
-    public User(String userName, String password) {
+    public User(String userName, String password, String mail) {
         this.userName = userName;
         this.password = password;
+        this.mail = mail;
     }
 }
 
@@ -104,7 +105,7 @@ class ClientHandler extends Thread {
             }
             case "SignUp": {
                 // checks the userName if it's taken, the response is zero and user is not added
-                // signup/userName/password
+                // signup/userName/password/mail
                 boolean duplicate = false;
                 String userName = split[1];
                 for (User user : users) {
@@ -120,7 +121,7 @@ class ClientHandler extends Thread {
                     }
                 }
                 if (!duplicate) {
-                    User user = new User(split[1], split[2]);
+                    User user = new User(split[1], split[2], split[3]);
                     users.add(user);
                     try {
                         DataBase.AddUser(user);
