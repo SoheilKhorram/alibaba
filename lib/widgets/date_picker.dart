@@ -1,114 +1,97 @@
+import 'package:alibaba/widgets/travel_date.dart';
 import 'package:flutter/material.dart';
 import 'package:persian_datetime_picker/persian_datetime_picker.dart';
 
-class DatePickerScreen extends StatefulWidget {
+class datePicker extends StatefulWidget {
+  final Function(Jalali) onDatesSelected;
+
+  const datePicker({Key? key, required this.onDatesSelected})
+      : super(key: key);
+
   @override
-  _DatePickerScreenState createState() => _DatePickerScreenState();
+  _datePickerState createState() => _datePickerState();
 }
 
-class _DatePickerScreenState extends State<DatePickerScreen> {
-  Jalali? _selectedDate;
+class _datePickerState extends State<datePicker> {
+  Jalali? raftDate;
+  Jalali? bargashtDate;
 
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Date Picker'),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const Text(
-              'Selected Date:',
-              style: TextStyle(fontSize: 24),
-            ),
-            const SizedBox(height: 16),
-            Text(
-              _selectedDate != null ? _selectedDate.toString() : 'No date selected',
-              style: const TextStyle(fontSize: 18),
-            ),
-            const SizedBox(height: 16),
-            ElevatedButton(
-              onPressed: () async {
-                Jalali? picked = await showPersianDatePicker(
-                  context: context,
-                  initialDate: Jalali.now(),
-                  firstDate: Jalali(1385, 8),
-                  lastDate: Jalali(1450, 9),
-                );
-                if (picked != null) {
-                  setState(() {
-                    _selectedDate = picked;
-                  });
-                }
-              },
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.yellow,
-              ),
-              child: const Text(
-                'Pick a Date',
-                style: TextStyle(color: Colors.black),
-              ),
-            ),
-          ],
-        ),
-      ),
+  void selectRaftDate(BuildContext context) async {
+    final Jalali? picked = await showPersianDatePicker(
+      context: context,
+      initialDate: raftDate ?? Jalali.now(),
+      firstDate: Jalali.now(),
+      lastDate: Jalali(1420),
     );
+    if (picked != null) {
+      setState(() {
+        raftDate = picked;
+        if (bargashtDate != null && bargashtDate!.isBefore(raftDate!.addDays(1))) {
+          bargashtDate = null;
+        }
+      });
+    }
   }
-}
 
-class TravelDate extends StatefulWidget {
-  final String text;
+  void selectBargashtDate(BuildContext context) async {
+    if (raftDate == null) {
+      return;
+    }
 
-  const TravelDate({Key? key, required this.text}) : super(key: key);
-
-  @override
-  _TravelDateState createState() => _TravelDateState();
-}
-
-class _TravelDateState extends State<TravelDate> {
-  Jalali? _selectedDate;
+    final Jalali? picked = await showPersianDatePicker(
+      context: context,
+      initialDate: bargashtDate ?? raftDate!.addDays(1),
+      firstDate: raftDate!.addDays(1),
+      lastDate: Jalali(1420),
+    );
+    if (picked != null) {
+      setState(() {
+        bargashtDate = picked;
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: 45,
-      child: Directionality(
-        textDirection: TextDirection.rtl,
-        child: OutlinedButton.icon(
-          icon: const Icon(
-            Icons.calendar_month_outlined,
-            color: Colors.grey,
-            size: 20,
+    return Column(
+      children: [
+        Container(
+          decoration: BoxDecoration(
+            border: Border.all(color: Colors.grey),
+            borderRadius: BorderRadius.circular(10),
+            color: const Color(0x05000000),
           ),
-          label: Text(
-            _selectedDate != null ? _selectedDate.toString() : widget.text,
-            style: const TextStyle(
-              color: Colors.grey,
-              fontFamily: 'Vazir',
-              fontSize: 15,
-            ),
-          ),
-          onPressed: () async {
-            final Jalali? picked = await Navigator.push<Jalali>(
-              context,
-              MaterialPageRoute(
-                builder: (context) => DatePickerScreen(),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisSize: MainAxisSize.max,
+            children: [
+              Expanded(
+                child: TravelDate(
+                  selectedDate: bargashtDate,
+                  hintText: "تاریخ برگشت",
+                  onTap: () => selectBargashtDate(context), enabled: raftDate != null,
+                ),
               ),
-            );
-            if (picked != null) {
-              setState(() {
-                _selectedDate = picked;
-              });
-            }
-          },
-          style: OutlinedButton.styleFrom(
-            backgroundColor: Colors.white,
-            side: BorderSide.none,
+              const SizedBox(
+                width: 1,
+                height: 48,
+                child: DecoratedBox(
+                  decoration: BoxDecoration(color: Colors.grey),
+                ),
+              ),
+              Expanded(
+                child: TravelDate(
+                  selectedDate: raftDate,
+                  hintText: "تاریخ رفت",
+                  onTap: () => selectRaftDate(context), enabled: true,
+                ),
+              ),
+            ],
           ),
         ),
-      ),
+        const SizedBox(height: 25),
+        const SizedBox(height: 15),
+      ],
     );
   }
 }
