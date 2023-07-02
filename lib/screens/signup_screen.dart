@@ -6,8 +6,8 @@ import 'package:alibaba/widgets/name_input.dart';
 import 'package:alibaba/widgets/password_input.dart';
 import 'package:alibaba/widgets/email_input.dart';
 import 'package:alibaba/widgets/submit_button.dart';
+import 'package:alibaba/screens/home_screen.dart';
 import '../widgets/User.dart';
-import '../widgets/date_picker.dart';
 import 'login_screen.dart';
 
 String response = '', message = '', result = '';
@@ -49,10 +49,9 @@ class _SignupScreenState extends State<SignupScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-<<<<<<< HEAD
         body: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 8),
           child: Column(

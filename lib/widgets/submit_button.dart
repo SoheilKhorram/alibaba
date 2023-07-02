@@ -2,16 +2,15 @@ import 'package:flutter/material.dart';
 
 class SubmitButton extends StatelessWidget {
   const SubmitButton(
-      this.text, {
-        Key? key,
-        this.backgroundColor,
-        this.onPressed,
-      }) : super(key: key);
+    this.text, {
+    Key? key,
+    this.backgroundColor,
+    this.onPressed,
+  }) : super(key: key);
 
   final String text;
   final VoidCallback? onPressed;
   final Color? backgroundColor;
-  final void Function()? onPressed;
 
   @override
   Widget build(BuildContext context) {

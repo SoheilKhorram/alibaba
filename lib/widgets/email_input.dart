@@ -1,19 +1,20 @@
 import 'package:flutter/material.dart';
 
 class EmailInput extends StatefulWidget {
-  const EmailInput({Key? key}) : super(key: key);
+  const EmailInput({super.key, required this.controller});
+
+  final TextEditingController controller;
 
   @override
   _EmailInputState createState() => _EmailInputState();
 }
 
 class _EmailInputState extends State<EmailInput> {
-  final TextEditingController _emailController = TextEditingController();
   bool _showError = false;
 
   @override
   void dispose() {
-    _emailController.dispose();
+    widget.controller.dispose();
     super.dispose();
   }
 
@@ -33,7 +34,7 @@ class _EmailInputState extends State<EmailInput> {
         child: Directionality(
           textDirection: TextDirection.rtl,
           child: TextField(
-            controller: _emailController,
+            controller: widget.controller,
             onChanged: (value) {
               setState(() {
                 _showError = !_validateEmail(value);
@@ -41,7 +42,7 @@ class _EmailInputState extends State<EmailInput> {
             },
             onEditingComplete: () {
               setState(() {
-                _showError = !_validateEmail(_emailController.text);
+                _showError = !_validateEmail(widget.controller.text);
               });
             },
             style: const TextStyle(
@@ -66,7 +67,8 @@ class _EmailInputState extends State<EmailInput> {
                   width: 2.5,
                 ),
               ),
-              labelStyle: const TextStyle(fontFamily: 'Vazir', color: Colors.grey),
+              labelStyle:
+                  const TextStyle(fontFamily: 'Vazir', color: Colors.grey),
               labelText: 'ایمیل',
               errorText: _showError ? 'ایمیل نامعتبر است' : null,
               errorStyle: const TextStyle(

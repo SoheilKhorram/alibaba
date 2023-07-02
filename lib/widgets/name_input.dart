@@ -1,21 +1,20 @@
 import 'package:flutter/material.dart';
 
 class NameInput extends StatefulWidget {
-  const NameInput({Key? key}) : super(key: key);
+  const NameInput({super.key, required this.controller});
 
-  final TextEditingController? controller;
+  final TextEditingController controller;
 
   @override
   _NameInputState createState() => _NameInputState();
 }
 
 class _NameInputState extends State<NameInput> {
-  final TextEditingController _nameController = TextEditingController();
   bool _showError = false;
 
   @override
   void dispose() {
-    _nameController.dispose();
+    widget.controller?.dispose();
     super.dispose();
   }
 
@@ -41,10 +40,10 @@ class _NameInputState extends State<NameInput> {
         child: Directionality(
           textDirection: TextDirection.rtl,
           child: TextField(
-            controller: _nameController,
+            controller: widget.controller,
             onChanged: validateInput,
             onEditingComplete: () {
-              validateInput(_nameController.text);
+              validateInput(widget.controller.text);
             },
             style: const TextStyle(
               fontFamily: 'Vazir',
@@ -68,7 +67,8 @@ class _NameInputState extends State<NameInput> {
                   width: 2.5,
                 ),
               ),
-              labelStyle: const TextStyle(fontFamily: 'Vazir', color: Colors.grey),
+              labelStyle:
+                  const TextStyle(fontFamily: 'Vazir', color: Colors.grey),
               labelText: 'نام کاربری',
               errorText: _showError ? 'نام نمی‌تواند خالی باشد' : null,
               errorStyle: _getErrorTextStyle(),

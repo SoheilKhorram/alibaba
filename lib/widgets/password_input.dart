@@ -3,7 +3,9 @@ import 'dart:async';
 import 'package:flutter_animation_progress_bar/flutter_animation_progress_bar.dart';
 
 class PasswordInput extends StatefulWidget {
-  const PasswordInput({Key? key}) : super(key: key);
+  const PasswordInput({super.key, required this.controller});
+
+  final TextEditingController controller;
 
   @override
   _PasswordInputState createState() => _PasswordInputState();
@@ -15,7 +17,6 @@ class _PasswordInputState extends State<PasswordInput> {
   late bool showPassword;
   final TextEditingController _passwordController = TextEditingController();
   PasswordStrength _passwordStrength = PasswordStrength.veryWeak;
-
 
   Timer? _timer;
 
@@ -46,17 +47,21 @@ class _PasswordInputState extends State<PasswordInput> {
     } else if (password.length < 6) {
       return PasswordStrength.weak;
     } else if (password.length < 8) {
-      if (_hasLowerCase(password) && _hasUpperCase(password) &&
+      if (_hasLowerCase(password) &&
+          _hasUpperCase(password) &&
           _hasDigit(password)) {
         return PasswordStrength.strong;
       } else {
         return PasswordStrength.weak;
       }
     } else {
-      if (_hasLowerCase(password) && _hasUpperCase(password) &&
-          _hasDigit(password) && !_hasRepetitiousWords(password)) {
+      if (_hasLowerCase(password) &&
+          _hasUpperCase(password) &&
+          _hasDigit(password) &&
+          !_hasRepetitiousWords(password)) {
         return PasswordStrength.veryStrong;
-      } else if (_hasLowerCase(password) && _hasUpperCase(password) &&
+      } else if (_hasLowerCase(password) &&
+          _hasUpperCase(password) &&
           _hasDigit(password)) {
         return PasswordStrength.strong;
       } else {
@@ -193,8 +198,8 @@ class _PasswordInputState extends State<PasswordInput> {
                     alignment: Alignment.bottomCenter,
                     transform: Matrix4.rotationY(3.14159),
                     child: FAProgressBar(
-                      progressColor: getPasswordStrengthColor(
-                          _passwordStrength),
+                      progressColor:
+                          getPasswordStrengthColor(_passwordStrength),
                       currentValue: _getProgressBarValue(_passwordStrength),
                       size: 8,
                       direction: Axis.horizontal,
@@ -203,19 +208,6 @@ class _PasswordInputState extends State<PasswordInput> {
                     ),
                   ),
                 ),
-                const SizedBox(width: 4),
-                Text(
-                  getPasswordStrengthText(_passwordStrength),
-                  style: TextStyle(
-                    fontFamily: 'Vazir',
-                    color: getPasswordStrengthColor(_passwordStrength),
-                  ),
-                ),
-              ],
-            ),
-          ],
-        ),
-      ),
                 const SizedBox(width: 4),
                 Text(
                   getPasswordStrengthText(_passwordStrength),
