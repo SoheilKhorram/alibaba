@@ -9,12 +9,14 @@ import 'package:alibaba/screens/flight_info_screen.dart';
 import 'package:alibaba/screens/info_confirmation_screen.dart';
 import 'package:alibaba/screens/account_info_screen.dart';
 import 'package:alibaba/screens/user_vacations_screen.dart';
+import 'package:alibaba/screens/transactions_screen.dart';
 
 void main() {
   runApp(
     const MaterialApp(
       debugShowCheckedModeBanner: false,
       home: UserVacationsScreen(),
+      home: TransactionsScreen(),
     ),
   );
 }
