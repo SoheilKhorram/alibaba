@@ -9,6 +9,7 @@ class SubmitButton extends StatelessWidget {
       }) : super(key: key);
 
   final String text;
+  final VoidCallback? onPressed;
   final Color? backgroundColor;
   final void Function()? onPressed;
 
@@ -27,8 +28,8 @@ class SubmitButton extends StatelessWidget {
         onPressed: onPressed,
         child: Text(
           text,
-          style: TextStyle(
-            color: backgroundColor != null ? Colors.white : Colors.black,
+          style: const TextStyle(
+            color: Colors.black,
             fontFamily: 'Vazir',
             fontSize: 18,
           ),

@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 class NameInput extends StatefulWidget {
   const NameInput({Key? key}) : super(key: key);
 
+  final TextEditingController? controller;
+
   @override
   _NameInputState createState() => _NameInputState();
 }
