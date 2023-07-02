@@ -14,7 +14,7 @@ class _NameInputState extends State<NameInput> {
 
   @override
   void dispose() {
-    widget.controller?.dispose();
+    widget.controller.dispose();
     super.dispose();
   }
 
