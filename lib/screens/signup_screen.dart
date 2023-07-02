@@ -49,9 +49,10 @@ class _SignupScreenState extends State<SignupScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
+<<<<<<< HEAD
         body: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 8),
           child: Column(
